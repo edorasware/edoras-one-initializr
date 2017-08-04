@@ -112,6 +112,17 @@
           "format": "build"
         },
         "default": false
+      },
+      {
+        "name": "Addon Project",
+        "id": "addon-project",
+        "description": "Generate a Maven based addon project",
+        "action": "/addon.zip",
+        "tags": {
+          "build": "addon",
+          "format": "project"
+        },
+        "default": false
       }
     ]
   },

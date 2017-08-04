@@ -142,6 +142,17 @@ $(function () {
             }
         });
     };
+
+    var updateIfAddon = function () {
+        if ($("#type").val() == 'addon-project') {
+            $("#groupId").attr('value', "com.edorasware.addons");
+            $("#artifactId").attr('value', "edoras-addon-".concat($("#shortName").val()));
+        } else {
+            $("#groupId").attr('disabled', false);
+            $("#artifactId").attr('disabled', false);
+        }
+    };
+
     var addTransients = function(dependencyId) {
         addTag("edoras-operator-dashboard", "Operator Dashboard");
         $("#dependencies input[value='" + "edoras-operator-dashboard" + "']").prop('checked', true);
@@ -176,6 +187,7 @@ $(function () {
     refreshDependencies($("#edorasoneVersion").val());
     $("#type").on('change', function () {
         $("#form").attr('action', $(this.options[this.selectedIndex]).attr('data-action'))
+        updateIfAddon();
     });
     $("#groupId").on("change", function() {
         generatePackageName();
@@ -184,8 +196,9 @@ $(function () {
         $("#name").val($(this).val());
         $("#baseDir").attr('value', this.value)
     });
-    $("#shortName").on('change', function () {
+    $("#shortName").on('keyup', function () {
         generatePackageName();
+        updateIfAddon();
     });
     $("#createSampleCodeBox").on('change', function () {
         if(this.checked) {

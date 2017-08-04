@@ -16,6 +16,7 @@
 
 package com.edorasware.one.initializr.web.controller;
 
+import com.edorasware.one.initializr.generator.AddonGenerator;
 import com.edorasware.one.initializr.generator.BasicProjectRequest;
 import com.edorasware.one.initializr.generator.ProjectGenerator;
 import com.edorasware.one.initializr.generator.ProjectRequest;
@@ -67,14 +68,16 @@ public class MainController extends AbstractInitializrController {
 			.parseMediaType("application/hal+json");
 
 	private final ProjectGenerator projectGenerator;
+	private final AddonGenerator addonGenerator;
 	private final DependencyMetadataProvider dependencyMetadataProvider;
 
 	public MainController(InitializrMetadataProvider metadataProvider,
-                          ResourceUrlProvider resourceUrlProvider,
-                          ProjectGenerator projectGenerator,
-                          DependencyMetadataProvider dependencyMetadataProvider) {
+						  ResourceUrlProvider resourceUrlProvider,
+						  ProjectGenerator projectGenerator,
+						  AddonGenerator addonGenerator, DependencyMetadataProvider dependencyMetadataProvider) {
 		super(metadataProvider, resourceUrlProvider);
 		this.projectGenerator = projectGenerator;
+		this.addonGenerator = addonGenerator;
 		this.dependencyMetadataProvider = dependencyMetadataProvider;
 	}
 
@@ -189,7 +192,7 @@ public class MainController extends AbstractInitializrController {
 
 	@RequestMapping("/starter.zip")
 	@ResponseBody
-	public ResponseEntity<byte[]> springZip(BasicProjectRequest basicRequest)
+	public ResponseEntity<byte[]> projectZip(BasicProjectRequest basicRequest)
 			throws IOException {
 		ProjectRequest request = (ProjectRequest) basicRequest;
 		File dir = projectGenerator.generateProjectStructure(request);
@@ -207,12 +210,12 @@ public class MainController extends AbstractInitializrController {
 		zip.addFileset(set);
 		zip.setDestFile(download.getCanonicalFile());
 		zip.execute();
-		return upload(download, dir, generateFileName(request, "zip"), "application/zip");
+		return uploadProject(download, dir, generateFileName(request, "zip"), "application/zip");
 	}
 
 	@RequestMapping(value = "/starter.tgz", produces = "application/x-compress")
 	@ResponseBody
-	public ResponseEntity<byte[]> springTgz(BasicProjectRequest basicRequest)
+	public ResponseEntity<byte[]> projectTgz(BasicProjectRequest basicRequest)
 			throws IOException {
 		ProjectRequest request = (ProjectRequest) basicRequest;
 		File dir = projectGenerator.generateProjectStructure(request);
@@ -232,8 +235,36 @@ public class MainController extends AbstractInitializrController {
 		method.setValue("gzip");
 		zip.setCompression(method );
 		zip.execute();
-		return upload(download, dir, generateFileName(request, "tar.gz"),
+		return uploadProject(download, dir, generateFileName(request, "tar.gz"),
 				"application/x-compress");
+	}
+
+	@RequestMapping("/addon.zip")
+	@ResponseBody
+	public ResponseEntity<byte[]> addonZip(BasicProjectRequest basicRequest)
+			throws IOException {
+		ProjectRequest request = (ProjectRequest) basicRequest;
+		File dir = addonGenerator.generateAddonStructure(request);
+
+		File download = addonGenerator.createDistributionFile(dir, ".zip");
+
+		dir.setExecutable(true);
+		Zip zip = new Zip();
+		zip.setProject(new Project());
+		zip.setDefaultexcludes(false);
+		ZipFileSet set = new ZipFileSet();
+		set.setDir(dir);
+		set.setFileMode("755");
+		set.setDefaultexcludes(false);
+		zip.addFileset(set);
+		set = new ZipFileSet();
+		set.setDir(dir);
+		set.setIncludes("**,");
+		set.setDefaultexcludes(false);
+		zip.addFileset(set);
+		zip.setDestFile(download.getCanonicalFile());
+		zip.execute();
+		return uploadAddon(download, dir, generateAddonFileName(request, "zip"), "application/zip");
 	}
 
 	private static String generateFileName(ProjectRequest request, String extension) {
@@ -246,13 +277,33 @@ public class MainController extends AbstractInitializrController {
 		}
 	}
 
-	private ResponseEntity<byte[]> upload(File download, File dir, String fileName,
-			String contentType) throws IOException {
+	private static String generateAddonFileName(ProjectRequest request, String extension) {
+		String tmp = request.getArtifactId().concat("-parent").replaceAll(" ", "_");
+		try {
+			return URLEncoder.encode(tmp, "UTF-8") + "." + extension;
+		}
+		catch (UnsupportedEncodingException e) {
+			throw new IllegalStateException("Cannot encode URL", e);
+		}
+	}
+
+	private ResponseEntity<byte[]> uploadProject(File download, File dir, String fileName,
+												 String contentType) throws IOException {
 		byte[] bytes = StreamUtils.copyToByteArray(new FileInputStream(download));
 		log.info("Uploading: {} ({} bytes)", download, bytes.length);
 		ResponseEntity<byte[]> result = createResponseEntity(bytes, contentType,
 				fileName);
 		projectGenerator.cleanTempFiles(dir);
+		return result;
+	}
+
+	private ResponseEntity<byte[]> uploadAddon(File download, File dir, String fileName,
+												 String contentType) throws IOException {
+		byte[] bytes = StreamUtils.copyToByteArray(new FileInputStream(download));
+		log.info("Uploading: {} ({} bytes)", download, bytes.length);
+		ResponseEntity<byte[]> result = createResponseEntity(bytes, contentType,
+				fileName);
+		addonGenerator.cleanTempFiles(dir);
 		return result;
 	}
 
