@@ -1,4 +1,4 @@
-# edoras-one-initializr [![Build Status](https://travis-ci.org/rvillars/edoras-one-initializr.svg?branch=master)](https://travis-ci.org/rvillars/edoras-one-initializr)
+# edoras-one-initializr [![Build Status](https://travis-ci.org/edorasware/edoras-one-initializr.svg?branch=master)](https://travis-ci.org/edorasware/edoras-one-initializr)
 
 See https://edoras-one-initializr.cfapps.io
 
@@ -34,6 +34,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 ## Change Log
 
 ### 08-07-2017
+- Forked project to edorasware account
 - Updated VersionParser to allow Starter-Patch versions (Versioning scheme: ProductMajor.ProductMinor.ProductPatch-ProductQualifier-StarterPatch-StarterQualifier) 
 - Corrected README.md template (minor formatting and spelling)
 - Made the basic artifact metadata fields (artifactId, groupId and shortname) required.
