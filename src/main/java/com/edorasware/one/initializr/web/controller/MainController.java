@@ -205,11 +205,6 @@ public class MainController extends AbstractInitializrController {
 		set.setFileMode("755");
 		set.setDefaultexcludes(false);
 		zip.addFileset(set);
-		set = new ZipFileSet();
-		set.setDir(dir);
-		set.setIncludes("**,");
-		set.setDefaultexcludes(false);
-		zip.addFileset(set);
 		zip.setDestFile(download.getCanonicalFile());
 		zip.execute();
 		return upload(download, dir, generateFileName(request, "zip"), "application/zip");
@@ -231,10 +226,6 @@ public class MainController extends AbstractInitializrController {
 		TarFileSet set = zip.createTarFileSet();
 		set.setDir(dir);
 		set.setFileMode("755");
-		set.setDefaultexcludes(false);
-		set = zip.createTarFileSet();
-		set.setDir(dir);
-		set.setIncludes("**,");
 		set.setDefaultexcludes(false);
 		zip.setDestFile(download.getCanonicalFile());
 		Tar.TarCompressionMethod method = new Tar.TarCompressionMethod();

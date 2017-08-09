@@ -33,6 +33,10 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### 08-09-2017
+- Corrected a bug that added root project files twice to download archive
+
+
 ### 08-07-2017
 - Forked project to edorasware account
 - Updated VersionParser to allow Starter-Patch versions (Versioning scheme: ProductMajor.ProductMinor.ProductPatch-ProductQualifier-StarterPatch-StarterQualifier) 
