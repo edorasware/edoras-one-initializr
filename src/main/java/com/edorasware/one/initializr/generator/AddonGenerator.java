@@ -215,6 +215,12 @@ public class AddonGenerator {
 		String addonFrontendPom = new String(doGenerateAddonFrontendModulePom(model));
 		writeText(new File(addonFrontendDir, "pom.xml"), addonFrontendPom);
 
+		// package.json
+		write(new File(addonFrontendDir, "package.json"), "addon-frontend-package.json", model);
+
+		// README.md
+		write(new File(addonFrontendDir, "README.md"), "addon-frontend-README.tmpl", model);
+
 
 		// ==== Addon Starter Module ====
 

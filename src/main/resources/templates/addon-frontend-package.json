@@ -1,0 +1,16 @@
+{
+  "name": "edoras-one-addon-frontend-initializr",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "postinstall": "node node_modules/edoras-one-addon-frontend-cli/dist"
+  },
+  "author": "edorasware AG",
+  "license": "Apache-2.0",
+  "private": true,
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-preset-es2015": "6.24.1",
+    "edoras-one-addon-frontend-cli": "git+https://github.com/edorasware/edoras-one-addon-frontend-cli.git"
+  }
+}
