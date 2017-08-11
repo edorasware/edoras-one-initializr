@@ -33,7 +33,9 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
-### 08-09-2017
+### 08-11-2017
+- Added versions 1.6.9 and 2.0.0-M6-1
+- Made version 1.6.9 the default version
 - Corrected a bug that added root project files twice to download archive
 
 ### 08-07-2017

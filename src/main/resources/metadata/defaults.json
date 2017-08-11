@@ -116,7 +116,12 @@
     "content": [
       {
         "name": "2.0.0-M6",
-        "id": "2.0.0-M6",
+        "id": "2.0.0-M6-1",
+        "default": false
+      },
+      {
+        "name": "1.6.9",
+        "id": "1.6.9",
         "default": true
       },
       {
