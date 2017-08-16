@@ -124,11 +124,11 @@ It is loaded after the edoras one context files so it is possible to override de
 
 ### Other configuration files
 
-#### logback.xml
+#### application-logback.xml
 
 This is the configuration file for the logback logging system.
-The it includes by default a configuration for a console appender. A file appender can be added by uncommenting the appropriate lines.
-The appender configuration provides appropriate default values. They can be overridden or an entirely new configuration can be provided.
+It is included into the default logback.xml configuration file provided by by starter. application.logback.xml allow to provide additional logging configuration
+such as additional loggers or appenders.
 
 #### tenants/{{shortName}}.json ({shortName.}json)
 

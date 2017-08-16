@@ -231,6 +231,9 @@ public class ProjectGenerator {
 		// application.yml
 		write(new File(resources, "application.yml"), "application.yml", model);
 
+		// application-logback.xml
+		write(new File(resources, "application-logback.xml"), "application-logback.xml", model);
+
 		// shortName.yml
 		write(new File(resources, shortName+".yml"), "config.yml", model);
 
@@ -242,9 +245,6 @@ public class ProjectGenerator {
 
 		// shortName-web-context.yml
 		write(new File(resources, shortName+"-web-context.xml"), "spring-web-context.xml", model);
-
-		// logback.xml
-		write(new File(resources, "logback.xml"), "logback.xml", model);
 
 		// tenants
 		File tenants = new File(resources, "tenants");
