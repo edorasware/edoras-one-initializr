@@ -9,7 +9,7 @@
 		<version>{{version}}</version>
 	</parent>
 
-	<artifactId>{{artifactId}}-starter</artifactId>
+	<artifactId>{{artifactId}}-demo</artifactId>
 	<packaging>{{packaging}}</packaging>
 
 	<name>{{name}}</name>
