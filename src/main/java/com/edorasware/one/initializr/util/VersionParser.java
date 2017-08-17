@@ -44,7 +44,7 @@ public class VersionParser {
 	public static final VersionParser DEFAULT = new VersionParser(Collections.emptyList());
 
 	private static final Pattern VERSION_REGEX =
-			Pattern.compile("^(\\d+)\\.(\\d+|x)\\.(\\d+|x)(?:-([\\S+)(\\d+)?(-\\d+)?(-SNAPSHOT)?)?$");
+			Pattern.compile("^(\\d+)\\.(\\d+|x)\\.(\\d+|x)(?:-(\\S+)(\\d+)?(-\\d+)?(-SNAPSHOT)?)?$");
 
 	private static final Pattern RANGE_REGEX =
 			Pattern.compile("(\\(|\\[)(.*),(.*)(\\)|\\])");
