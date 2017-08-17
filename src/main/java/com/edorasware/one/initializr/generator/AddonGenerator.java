@@ -272,7 +272,7 @@ public class AddonGenerator {
 		write(new File(addonStarterResources, shortName+"-web-context.xml"), "spring-web-context.xml", model);
 
 		// logback.xml
-		write(new File(addonStarterResources, "logback.xml"), "logback.xml", model);
+		write(new File(addonStarterResources, "application-logback.xml"), "application-logback.xml", model);
 
 		// tenants
 		File tenants = new File(addonStarterResources, "tenants");
