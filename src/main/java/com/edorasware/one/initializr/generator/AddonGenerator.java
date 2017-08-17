@@ -222,9 +222,9 @@ public class AddonGenerator {
 		write(new File(addonFrontendDir, "README.md"), "addon-frontend-README.tmpl", model);
 
 
-		// ==== Addon Starter Module ====
+		// ==== Addon Demo Module ====
 
-		File addonStarterDir = new File(parentDir, request.getArtifactId()+"-test");
+		File addonStarterDir = new File(parentDir, request.getArtifactId()+"-demo");
 		addonStarterDir.mkdirs();
 
 		String addonTestPom = new String(doGenerateAddonStarterModulePom(model));
