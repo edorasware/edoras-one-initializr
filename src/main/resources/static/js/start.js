@@ -147,7 +147,10 @@ $(function () {
         if ($("#type").val() == 'addon-project') {
             $("#groupId").attr('value', "com.edorasware.addons");
             $("#artifactId").attr('value', "edoras-addon-".concat($("#shortName").val()));
+            $("#edorasoneVersion").attr('value', "1.6.9-1");
+            $("#edorasoneVersion").attr('disabled', true);
         } else {
+            $("#edorasoneVersion").attr('disabled', false);
             $("#groupId").attr('disabled', false);
             $("#artifactId").attr('disabled', false);
         }
