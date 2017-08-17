@@ -98,6 +98,12 @@ public class InitializrProperties extends InitializrConfiguration {
 	private final SimpleElement shortName = new SimpleElement("demo");
 
 	/**
+	 * Create Sample Code metadata.
+	 */
+	@JsonIgnore
+	private final SimpleElement createSampleCode = new SimpleElement("true");
+
+	/**
 	 * Description metadata.
 	 */
 	@JsonIgnore
@@ -152,6 +158,10 @@ public class InitializrProperties extends InitializrConfiguration {
 
 	public SimpleElement getShortName() {
 		return shortName;
+	}
+
+	public SimpleElement getCreateSampleCode() {
+		return createSampleCode;
 	}
 
 	public SimpleElement getDescription() {

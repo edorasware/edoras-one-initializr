@@ -58,6 +58,9 @@ public class InitializrMetadata {
 	private final TextCapability shortName = new TextCapability("shortName", "Short Name",
 			"");
 
+	private final BooleanCapability createSampleCode = new BooleanCapability("createSampleCode", "Create Sample Code",
+			"");
+
 	private final TextCapability description = new TextCapability("description", "Description",
 			"");
 
@@ -115,6 +118,10 @@ public class InitializrMetadata {
 		return shortName;
 	}
 
+	public BooleanCapability getCreateSampleCode() {
+		return createSampleCode;
+	}
+
 	public TextCapability getDescription() {
 		return description;
 	}
@@ -149,6 +156,7 @@ public class InitializrMetadata {
 		this.languages.merge(other.languages);
 		this.name.merge(other.name);
 		this.shortName.merge(other.shortName);
+		this.createSampleCode.merge(other.createSampleCode);
 		this.description.merge(other.description);
 		this.groupId.merge(other.groupId);
 		this.artifactId.merge(other.artifactId);
@@ -244,6 +252,7 @@ public class InitializrMetadata {
 		defaults.put("version", version.getContent());
 		defaults.put("name", name.getContent());
 		defaults.put("shortName", shortName.getContent());
+		defaults.put("createSampleCode", createSampleCode.getContent());
 		defaults.put("description", description.getContent());
 		defaults.put("packageName", packageName.getContent());
 		return defaults;

@@ -11,6 +11,12 @@
     "description": "Used to name the config files (camelCase text, no spaces, max. 20 characters)",
     "content": "demo"
   },
+  "createSampleCode": {
+    "id": "createSampleCode",
+    "type": "BOOLEAN",
+    "description": null,
+    "content": true
+  },
   "description": {
     "id": "description",
     "type": "TEXT",

@@ -41,10 +41,10 @@ public class BasicProjectRequest {
 	private String packaging;
 	private String applicationName;
 	private String shortName;
+	private boolean createSampleCode;
 	private String language;
 	private String packageName;
 	private String javaVersion;
-	private boolean createSampleTest;
 
 	// The base directory to create in the archive - no baseDir by default
 	private String baseDir;
@@ -145,6 +145,14 @@ public class BasicProjectRequest {
 		this.shortName = shortName;
 	}
 
+	public boolean isCreateSampleCode() {
+		return createSampleCode;
+	}
+
+	public void setCreateSampleCode(boolean createSampleCode) {
+		this.createSampleCode = createSampleCode;
+	}
+
 	public String getLanguage() {
 		return language;
 	}
@@ -181,13 +189,5 @@ public class BasicProjectRequest {
 
 	public void setBaseDir(String baseDir) {
 		this.baseDir = baseDir;
-	}
-
-	public boolean isCreateSampleTest() {
-		return createSampleTest;
-	}
-
-	public void setCreateSampleTest(boolean createSampleTest) {
-		this.createSampleTest = createSampleTest;
 	}
 }

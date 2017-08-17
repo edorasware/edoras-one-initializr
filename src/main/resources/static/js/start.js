@@ -102,6 +102,8 @@
                 case 'groupId':
                 case 'artifactId':
                 case 'name':
+                case 'shortName':
+                case 'createSampleCode':
                 case 'description':
                 case 'packageName':
                     $('.' + param.name.toLowerCase() + '-form-group').removeClass("hidden");
@@ -176,6 +178,12 @@ $(function () {
     });
     $("#shortName").on('change', function () {
         generatePackageName();
+    });
+    $("#createSampleCodeBox").on('change', function () {
+        if(this.checked) {
+            $(this).prop("checked", true);
+        }
+        $('#createSampleCode').val(this.checked);
     });
     $("#edorasoneVersion").on("change", function (e) {
         refreshDependencies(this.value);

@@ -58,6 +58,7 @@ public class InitializrMetadataV2JsonMapper implements InitializrMetadataJsonMap
 						TemplateVariable.VariableType.REQUEST_PARAM),
 				new TemplateVariable("name", TemplateVariable.VariableType.REQUEST_PARAM),
 				new TemplateVariable("shortName", TemplateVariable.VariableType.REQUEST_PARAM),
+				new TemplateVariable("createSampleCode", TemplateVariable.VariableType.REQUEST_PARAM),
 				new TemplateVariable("description",
 						TemplateVariable.VariableType.REQUEST_PARAM),
 				new TemplateVariable("packageName",
@@ -79,6 +80,7 @@ public class InitializrMetadataV2JsonMapper implements InitializrMetadataJsonMap
 		text(delegate, metadata.getVersion());
 		text(delegate, metadata.getName());
 		text(delegate, metadata.getShortName());
+		flag(delegate, metadata.getCreateSampleCode());
 		text(delegate, metadata.getDescription());
 		text(delegate, metadata.getPackageName());
 		return delegate.toString();
@@ -143,6 +145,16 @@ public class InitializrMetadataV2JsonMapper implements InitializrMetadataJsonMap
 		map.put("type", capability.getType().getName());
 		String defaultValue = capability.getContent();
 		if (StringUtils.hasText(defaultValue)) {
+			map.put("default", defaultValue);
+		}
+		parent.put(capability.getId(), map);
+	}
+
+	protected void flag(JSONObject parent, BooleanCapability capability) {
+		Map<String, Object> map = new LinkedHashMap<>();
+		map.put("type", capability.getType().getName());
+		Boolean defaultValue = capability.getContent();
+		if (defaultValue != null) {
 			map.put("default", defaultValue);
 		}
 		parent.put(capability.getId(), map);

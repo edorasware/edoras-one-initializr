@@ -71,33 +71,41 @@
                     </div>
                     <div class="form-group shortName-form-group">
                         <label for="shortName" class="control-label">{{shortName.title}}</label>
-                        <input tabindex="5" id="shortName" class="form-control" type="text"
+                        <input tabindex="6" id="shortName" class="form-control" type="text"
                                value="{{shortName.content}}"
                                name="shortName" required pattern="[a-zA-Z]+" maxlength="20">
                         <p class="help-block">{{shortName.description}}</p>
                     </div>
+                    <div class="checkbox createSampleCode-form-group">
+                        <label>
+                            <input type="hidden" id="createSampleCode" name="createSampleCode" value="{{createSampleCode.content}}">
+                            <input tabindex="7" id="createSampleCodeBox" type="checkbox"
+                                   checked="{{createSampleCode.content}}"
+                                   name="createSampleCodeBox"> {{createSampleCode.title}}
+                        </label>
+                    </div>
                     <div class="form-group full hidden name-form-group">
                         <label for="name" class="control-label">{{name.title}}</label>
-                        <input tabindex="6" id="name" class="form-control" type="text" value="{{name.content}}"
+                        <input tabindex="8" id="name" class="form-control" type="text" value="{{name.content}}"
                                name="name">
                         <p class="help-block">{{name.description}}</p>
                     </div>
                     <div class="form-group full hidden description-form-group">
                         <label for="description" class="control-label">{{description.title}}</label>
-                        <input tabindex="7" id="description" class="form-control" type="text"
+                        <input tabindex="9" id="description" class="form-control" type="text"
                                value="{{description.content}}" name="description">
                         <p class="help-block">{{description.description}}</p>
                     </div>
                     <div class="form-group full hidden packagename-form-group">
                         <label for="packageName" class="control-label">{{packageName.title}}</label>
-                        <input tabindex="8" id="packageName" class="form-control" type="text"
+                        <input tabindex="10" id="packageName" class="form-control" type="text"
                                value="{{packageName.content}}"
                                name="packageName">
                         <p class="help-block">{{packageName.description}}</p>
                     </div>
                     <div class="form-group full hidden packaging-form-group">
                         <label for="packaging" class="control-label">{{packagings.title}}</label>
-                        <select tabindex="9" class="form-control" id="packaging" name="packaging">
+                        <select tabindex="11" class="form-control" id="packaging" name="packaging">
                             {{#packagings.content}}
                             <option value="{{id}}"{{#default}} selected{{/default}}>{{name}}</option>
                             {{/packagings.content}}
@@ -106,7 +114,7 @@
                     </div>
                     <div class="form-group full hidden javaversion-form-group">
                         <label for="javaVersion" class="control-label">{{javaVersions.title}}</label>
-                        <select tabindex="10" class="form-control" name="javaVersion" id="javaVersion">
+                        <select tabindex="12" class="form-control" name="javaVersion" id="javaVersion">
                             {{#javaVersions.content}}
                             <option value="{{id}}"{{#default}} selected{{/default}}>{{name}}</option>
                             {{/javaVersions.content}}
@@ -121,7 +129,7 @@
 
                     <div class="form-group">
                         <label for="autocomplete" class="control-label">Search for addons</label>
-                        <input tabindex="11" id="autocomplete" class="form-control" type="text"
+                        <input tabindex="13" id="autocomplete" class="form-control" type="text"
                                placeholder="ECM, Index, Analytics, Operator Dashboard..."
                                name="autocomplete">
                     </div>
@@ -137,7 +145,7 @@
             </div>
             <div class="row">
                 <p class="text-center">
-                    <button tabindex="12" name="generate-project" type="submit" class="btn btn-lg btn-primary"
+                    <button tabindex="14" name="generate-project" type="submit" class="btn btn-lg btn-primary"
                             role="button">
                         Generate Project
                     </button>
@@ -154,7 +162,7 @@
                         {{#content}}
                         <div class="checkbox" data-range="{{#versionRange}}{{versionRange}}{{/versionRange}}">
                             <label>
-                                <input tabindex="13" type="checkbox" name="style" value="{{id}}">{{name}}
+                                <input tabindex="15" type="checkbox" name="style" value="{{id}}">{{name}}
                                 <p class="help-block">{{#description}}{{.}}{{/description}}</p>
                                 {{#versionRequirement}}
                                 <p class="help-block version-requirement">requires edoras one {{.}}</p>
@@ -168,7 +176,7 @@
             </div>
             <div class="row full hidden">
                 <p class="text-center">
-                    <button tabindex="14" name="generate-project" type="submit" class="btn btn-lg btn-primary"
+                    <button tabindex="16" name="generate-project" type="submit" class="btn btn-lg btn-primary"
                             role="button">
                         Generate Project
                     </button>

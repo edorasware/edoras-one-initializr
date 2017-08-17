@@ -135,6 +135,9 @@ public class InitializrMetadataBuilder {
 		if (!StringUtils.hasText(metadata.getShortName().getContent())) {
 			metadata.getShortName().setContent("demo");
 		}
+		if (!StringUtils.hasText(metadata.getShortName().getContent())) {
+			metadata.getCreateSampleCode().setContent(true);
+		}
 		if (!StringUtils.hasText(metadata.getDescription().getContent())) {
 			metadata.getDescription().setContent("Demo project for edoras one");
 		}

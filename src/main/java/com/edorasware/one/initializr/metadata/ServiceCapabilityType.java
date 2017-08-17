@@ -34,6 +34,11 @@ public enum ServiceCapabilityType {
 	TEXT("text"),
 
 	/**
+	 * A simple boolean value.
+	 */
+	BOOLEAN("boolean"),
+
+	/**
 	 * A simple value to be chosen amongst the specified options.
 	 */
 	SINGLE_SELECT("single-select"),

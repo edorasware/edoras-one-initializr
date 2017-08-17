@@ -59,7 +59,7 @@ public class SimpleProjectGenerationTest {
 //        request.setPackageName("com.edorasware.one.initializr");
 //        request.setArtifactId("edoras-one-initializr");
 //        request.setShortName("initializr");
-        request.setCreateSampleTest(true);
+        request.setCreateSampleCode(true);
         File dir = projectGenerator.generateProjectStructure(request);
 
         System.out.print(printDirectoryTree(dir));

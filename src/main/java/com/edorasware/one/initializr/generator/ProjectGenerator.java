@@ -167,7 +167,6 @@ public class ProjectGenerator {
 		// manually set some properties, seems not to be stable in javascript
 //		request.setBaseDir(request.getArtifactId());
 		request.setPackageName(request.getGroupId().concat(".").concat(request.getShortName()));
-		request.setCreateSampleTest(true);
 
 		Map<String, Object> model = resolveModel(request);
 
@@ -212,7 +211,7 @@ public class ProjectGenerator {
 				request.getPackageName().replace(".", "/"));
 		test.mkdirs();
 
-		if (request.isCreateSampleTest()) {
+		if (request.isCreateSampleCode()) {
 //			setupTestModel(request, model);
 			if (isEdorasoneVersion10(request)) {
 				write(new File(test, "SampleComponentTest." + language), "SampleComponentTest16." + language + ".tmpl", model);
