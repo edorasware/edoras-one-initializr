@@ -36,6 +36,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 ### 08-15-2017
 - Updated versions to starter 1.6.9-1 and 2.0.0-M6-2
 - Changed logback.xml to application-logback.xml so so projects can extend the default logback config (instead of providing their own logback.xml)
+- Updated Version Regex to match new 1.6.9-1 pattern.
 
 ### 08-11-2017
 - Added versions 1.6.9 and 2.0.0-M6-1
