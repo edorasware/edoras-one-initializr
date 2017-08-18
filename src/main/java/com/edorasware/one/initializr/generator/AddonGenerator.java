@@ -146,7 +146,6 @@ public class AddonGenerator {
 		// manually set some properties, seems not to be stable in javascript
 //		request.setBaseDir(request.getArtifactId());
 		request.setPackageName(request.getGroupId().concat(".").concat(request.getShortName()));
-		request.setCreateSampleTest(true);
 
 		Map<String, Object> model = resolveModel(request);
 
@@ -224,34 +223,34 @@ public class AddonGenerator {
 
 		// ==== Addon Demo Module ====
 
-		File addonStarterDir = new File(parentDir, request.getArtifactId()+"-demo");
-		addonStarterDir.mkdirs();
+		File addonDemoDir = new File(parentDir, request.getArtifactId()+"-demo");
+		addonDemoDir.mkdirs();
 
 		String addonTestPom = new String(doGenerateAddonStarterModulePom(model));
-		writeText(new File(addonStarterDir, "pom.xml"), addonTestPom);
+		writeText(new File(addonDemoDir, "pom.xml"), addonTestPom);
 
 		// src/main/java
-		File addonTestSrc = new File(new File(addonStarterDir, "src/main/" + language),
+		File addonDemoSrc = new File(new File(addonDemoDir, "src/main/" + language),
 				request.getPackageName().replace(".", "/"));
-		addonTestSrc.mkdirs();
+		addonDemoSrc.mkdirs();
 
 		// src/test/java
-		File addonTestTest = new File(new File(addonStarterDir, "src/test/" + language),
+		File addonDemoTest = new File(new File(addonDemoDir, "src/test/" + language),
 				request.getPackageName().replace(".", "/"));
-		addonTestTest.mkdirs();
+		addonDemoTest.mkdirs();
 
-		if (request.isCreateSampleTest()) {
+		if (request.isCreateSampleCode()) {
 //			setupTestModel(request, model);
 			if (isEdorasoneVersion10(request)) {
-				write(new File(addonTestTest, "SampleComponentTest." + language), "SampleComponentTest16." + language + ".tmpl", model);
+				write(new File(addonDemoTest, "SampleComponentTest." + language), "SampleComponentTest16." + language + ".tmpl", model);
 			}
 			if (isEdorasoneVersion20(request)) {
-				write(new File(addonTestTest, "SampleComponentTest." + language), "SampleComponentTest20." + language + ".tmpl", model);
+				write(new File(addonDemoTest, "SampleComponentTest." + language), "SampleComponentTest20." + language + ".tmpl", model);
 			}
 		}
 
 		// src/main/resources
-		File addonStarterResources = new File(addonStarterDir, "src/main/resources");
+		File addonStarterResources = new File(addonDemoDir, "src/main/resources");
 		addonStarterResources.mkdirs();
 
 		String shortName = request.getShortName();
@@ -280,7 +279,7 @@ public class AddonGenerator {
 		write(new File(tenants, shortName+".json"), "tenant.json", model);
 
 		// src/test/resources
-		File addonStarterTestResources = new File(addonStarterDir, "src/test/resources");
+		File addonStarterTestResources = new File(addonDemoDir, "src/test/resources");
 		addonStarterTestResources.mkdirs();
 
 		// test-shortName.yml
