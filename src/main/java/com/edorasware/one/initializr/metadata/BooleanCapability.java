@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class BooleanCapability extends ServiceCapability<Boolean> {
 
-	private Boolean content;
+	private Boolean content = true;
 
 	@JsonCreator
     BooleanCapability(@JsonProperty("id") String id) {
