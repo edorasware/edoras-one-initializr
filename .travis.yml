@@ -7,4 +7,4 @@ env:
 script: mvn package cf:push -Dcf.password=$PASSWORD
 branches:
   only:
-  - master
+  - addon-templates

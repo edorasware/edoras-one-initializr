@@ -141,8 +141,8 @@
           <username>roger.villars@bluewin.ch</username>
           <org>bigendian</org>
           <space>development</space>
-          <appname>edoras-one-initializr</appname>
-          <url>edoras-one-initializr.cfapps.io</url>
+          <appname>edoras-one-initializr-test</appname>
+          <url>edoras-one-initializr-test.cfapps.io</url>
         </configuration>
       </plugin>
     </plugins>
