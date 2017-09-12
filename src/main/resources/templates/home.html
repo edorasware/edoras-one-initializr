@@ -76,14 +76,6 @@
                                name="shortName" required pattern="[a-zA-Z]+" maxlength="20">
                         <p class="help-block">{{shortName.description}}</p>
                     </div>
-                    <div class="checkbox createSampleCode-form-group">
-                        <label>
-                            <input type="hidden" id="createSampleCode" name="createSampleCode" value="{{createSampleCode.content}}">
-                            <input tabindex="7" id="createSampleCodeBox" type="checkbox"
-                                   checked="{{createSampleCode.content}}"
-                                   name="createSampleCodeBox"> {{createSampleCode.title}}
-                        </label>
-                    </div>
                     <div class="form-group full hidden name-form-group">
                         <label for="name" class="control-label">{{name.title}}</label>
                         <input tabindex="8" id="name" class="form-control" type="text" value="{{name.content}}"
@@ -120,6 +112,14 @@
                             {{/javaVersions.content}}
                         </select>
                         <p class="help-block">{{javaVersions.description}}</p>
+                    </div>
+                    <div class="checkbox full hidden createSampleCode-form-group">
+                        <label>
+                            <input type="hidden" id="createSampleCode" name="createSampleCode" value="{{createSampleCode.content}}">
+                            <input tabindex="7" id="createSampleCodeBox" type="checkbox"
+                                   checked="{{createSampleCode.content}}"
+                                   name="createSampleCodeBox"> {{createSampleCode.title}}
+                        </label>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6">
@@ -164,6 +164,9 @@
                             <label>
                                 <input tabindex="15" type="checkbox" name="style" value="{{id}}">{{name}}
                                 <p class="help-block">{{#description}}{{.}}{{/description}}</p>
+                                {{^transients.isEmpty}}
+                                <p class="help-block" style="color: #c70d30">Depends on: {{#transients}}{{^-first}}, {{/-first}}{{.}}{{/transients}}</p>
+                                {{/transients.isEmpty}}
                                 {{#versionRequirement}}
                                 <p class="help-block version-requirement">requires edoras one {{.}}</p>
                                 {{/versionRequirement}}

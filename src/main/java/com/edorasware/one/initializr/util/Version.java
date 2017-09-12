@@ -137,6 +137,10 @@ public final class Version implements Serializable, Comparable<Version> {
 		return qualifierComparator.compare(this.qualifier, other.qualifier);
 	}
 
+	public boolean isHigherThan(Version other) {
+		return this.compareTo(other) > 0;
+	}
+
 	private static int safeCompare(Integer first, Integer second) {
 		Integer firstIndex = first != null ? first : 0;
 		Integer secondIndex = second != null ? second : 0;

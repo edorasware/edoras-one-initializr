@@ -44,8 +44,12 @@
     function compareVersions(a, b) {
         var result;
 
-        var versionA = a.split(".");
-        var versionB = b.split(".");
+        //parse qualifier
+        var verA = a.split("-")[0];
+        var verB = b.split("-")[0];
+
+        var versionA = verA.split(".");
+        var versionB = verB.split(".");
         for (var i = 0; i < 3; i++) {
             result = parseInt(versionA[i], 10) - parseInt(versionB[i], 10);
             if (result != 0) {
@@ -84,7 +88,7 @@
         }
 
         return vars;
-    }
+    };
 
     applyParams = function() {
         var params = hashbang();
@@ -137,6 +141,10 @@ $(function () {
                 removeTag($("input", item).val());
             }
         });
+    };
+    var addTransients = function(dependencyId) {
+        addTag("edoras-operator-dashboard", "Operator Dashboard");
+        $("#dependencies input[value='" + "edoras-operator-dashboard" + "']").prop('checked', true);
     };
     var addTag = function (id, name) {
         if ($("#starters div[data-id='" + id + "']").length == 0) {
@@ -249,6 +257,7 @@ $(function () {
         else {
             addTag(suggestion.id, suggestion.name);
             $("#dependencies input[value='" + suggestion.id + "']").prop('checked', true);
+            addTransients(suggestion.id);
         }
         $('#autocomplete').typeahead('val', '');
     });
@@ -258,10 +267,11 @@ $(function () {
         removeTag(id);
     });
     $("#dependencies input").bind("change", function () {
-        var value = $(this).val()
+        var value = $(this).val();
         if ($(this).prop('checked')) {
             var results = starters.get(value);
             addTag(results[0].id, results[0].name);
+            addTransients(results[0].id);
         } else {
             removeTag(value);
         }

@@ -17,6 +17,7 @@
 package com.edorasware.one.initializr.metadata;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
@@ -196,6 +197,11 @@ public class InitializrMetadataBuilder {
 				String content = StreamUtils.copyToString(resource.getInputStream(),
 						UTF_8);
 				ObjectMapper objectMapper = new ObjectMapper();
+
+				SimpleModule module = new SimpleModule();
+				module.addDeserializer(Dependency.class, new DependencyDeserializer(Dependency.class));
+				objectMapper.registerModule(module);
+
 				InitializrMetadata anotherMetadata = objectMapper.readValue(content,
 						InitializrMetadata.class);
 				metadata.merge(anotherMetadata);

@@ -177,6 +177,46 @@
     "description": null,
     "content": [
       {
+        "name": "Operation",
+        "content": [
+          {
+            "name": "Operator Dashboard",
+            "id": "edoras-operator-dashboard",
+            "description": "Operator Dashboard to check health, processes, jobs, etc. of an edoras one instance",
+            "groupId": "com.edorasware.one",
+            "artifactId": "edoras-operator-dashboard",
+            "transients": [
+              "index"
+            ],
+            "mappings": [
+              {
+                "versionRange": "[1.6.0,1.6.999]",
+                "version": "1.2.0"
+              }
+            ],
+            "versionRange": "[1.6.0,1.6.999]"
+          },
+          {
+            "name": "Logback Plugin for Operator Dashboard",
+            "id": "edoras-operator-dashboard-plugin-logback",
+            "description": "Allows to update loback based logging configuration at runtime",
+            "groupId": "com.edorasware.one",
+            "artifactId": "edoras-operator-dashboard-plugin-logback",
+            "transients": [
+              "edoras-operator-dashboard",
+              "index"
+            ],
+            "mappings": [
+              {
+                "versionRange": "[1.6.0,1.6.999]",
+                "version": "1.1.0"
+              }
+            ],
+            "versionRange": "[1.6.0,1.6.999]"
+          }
+        ]
+      },
+      {
         "name": "Search",
         "content": [
           {

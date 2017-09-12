@@ -44,7 +44,7 @@ public class VersionParser {
 	public static final VersionParser DEFAULT = new VersionParser(Collections.emptyList());
 
 	private static final Pattern VERSION_REGEX =
-			Pattern.compile("^(\\d+)\\.(\\d+|x)\\.(\\d+|x)(?:-(\\S+)(\\d+)?(-\\d+)?(-SNAPSHOT)?)?$");
+			Pattern.compile("^(?<major>\\d+)\\.(?<minor>\\d+|x)\\.(?<patch>\\d+|x)(?:-(?<qualifier>[A-Z]\\d+)?)?(?:-(?<starterVersion>\\d+))?(?:-(?<starterSnapshot>SNAPSHOT))?$");
 
 	private static final Pattern RANGE_REGEX =
 			Pattern.compile("(\\(|\\[)(.*),(.*)(\\)|\\])");
@@ -71,14 +71,14 @@ public class VersionParser {
 					+ text + "': version format " + "is Minor.Major.Patch-Qualifier-StarterVersion-StarterQualifier "
 					+ "(e.g. 2.0.0-M6-1-SNAPSHOT)");
 		}
-		Integer major = Integer.valueOf(matcher.group(1));
-		String minor = matcher.group(2);
-		String patch = matcher.group(3);
+		Integer major = Integer.valueOf(matcher.group("major"));
+		String minor = matcher.group("minor");
+		String patch = matcher.group("patch");
 		Qualifier qualifier = null;
-		String qualifierId = matcher.group(4);
+		String qualifierId = matcher.group("qualifier");
 		if (StringUtils.hasText(qualifierId)) {
 			qualifier = new Version.Qualifier(qualifierId);
-			String o = matcher.group(5);
+			String o = qualifierId.substring(1,2);
 			if (o != null) {
 				qualifier.setVersion(Integer.valueOf(o));
 			}
@@ -120,7 +120,7 @@ public class VersionParser {
 	/**
 	 * Parse the string representation of a {@link VersionRange}. Throws an
 	 * {@link InvalidVersionException} if the range could not be parsed.
-	 * @param text the range text
+	 * @param text the range text or minimal Version number
 	 * @return a VersionRange instance for the specified range text
 	 * @throws InvalidVersionException if the range text could not be parsed
 	 */

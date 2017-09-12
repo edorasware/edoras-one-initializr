@@ -22,6 +22,7 @@ Todo:
 - Code cleanup
 - Fixing a lot of bugs
 - Support for Groovy / Kotlin
+- Refactor the UI to use AngularJS/Webpack
 
 ## Running form Command Line
 
@@ -32,6 +33,11 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 ```
 
 ## Change Log
+
+### 09-12-2017
+- Corrected version range parser
+- Added code for transient Plugin dependencies
+- Moved sample code checkbox to enhanced section
 
 ### 08-21-2017
 - Updated versions to starter 1.6.9-1 and 2.0.0-M6-2
