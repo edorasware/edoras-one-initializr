@@ -1,0 +1,33 @@
+package {{packageName}}.service;
+
+import com.edorasware.commons.core.entity.GlobalId;
+import com.edorasware.commons.core.entity.WorkObject;
+import com.edorasware.gear.core.generic.GenericWorkObjectService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Default implementation for learning purposes. See VAR_RATING to see how the rating information is persisted.
+ */
+@Service
+@Transactional
+public class Default{{capitalShortName}}Service implements {{capitalShortName}}Service {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Default{{capitalShortName}}Service.class);
+
+    private final GenericWorkObjectService workObjectService;
+
+    @Autowired
+    public Default{{capitalShortName}}Service(GenericWorkObjectService workObjectService) {
+        this.workObjectService = workObjectService;
+    }
+
+    @Override
+    public void logButtonClick(GlobalId globalId) {
+        WorkObject<?,?,?> workObject = workObjectService.getWorkObject(globalId);
+        LOG.debug("Button clicked on workObject with ID: "+workObject.getId()+" and name: "+workObject.getName());
+    }
+}

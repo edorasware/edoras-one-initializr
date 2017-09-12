@@ -12,7 +12,7 @@
 	<artifactId>{{artifactId}}-demo</artifactId>
 	<packaging>{{packaging}}</packaging>
 
-	<name>{{name}}</name>
+	<name>{{shortName}} Demo</name>
 	<description>{{description}}</description>
 
 	{{#mavenParentDefined}}
@@ -47,6 +47,12 @@
 			<version>${com.edorasware.one.starter.version}</version>
 		</dependency>
 		{{/war}}
+
+		<dependency>
+			<groupId>{{groupId}}</groupId>
+			<artifactId>{{artifactId}}</artifactId>
+			<version>{{version}}</version>
+		</dependency>
 
 		{{#compileDependencies}}
 		<dependency>
