@@ -78,6 +78,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ### 09-12-2017
 - Added possibility to create addon projects
+- Added sample code for addon projects
 - Corrected version range parser
 - Added code for transient Plugin dependencies
 - Moved sample code checkbox to enhanced section

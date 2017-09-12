@@ -29,6 +29,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.util.Assert;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StreamUtils;
+import org.springframework.util.StringUtils;
 
 import java.beans.PropertyDescriptor;
 import java.io.File;
@@ -186,6 +187,25 @@ public class AddonGenerator {
 				request.getPackageName().replace(".", "/"));
 		addonSrc.mkdirs();
 
+		if (request.isCreateSampleCode()) {
+
+			String capitalShortName = StringUtils.capitalize(request.getShortName());
+
+			// WebApplicationInitializer
+			write(new File(addonSrc, capitalShortName+"WebApplicationInitializer." + language), "addon-WebApplicationInitializer." + language + ".tmpl", model);
+
+			// Controller
+			File addonDemoController = new File(addonSrc, "controller");
+			addonDemoController.mkdirs();
+			write(new File(addonDemoController, capitalShortName+"Controller." + language), "addon-controller." + language + ".tmpl", model);
+
+			// Service
+			File addonDemoService = new File(addonSrc, "service");
+			addonDemoService.mkdirs();
+			write(new File(addonDemoService, capitalShortName+"Service." + language), "addon-service-interface." + language + ".tmpl", model);
+			write(new File(addonDemoService, "Default"+capitalShortName+"Service." + language), "addon-service-implementation." + language + ".tmpl", model);
+		}
+
 		// src/test/java
 		File addonTest = new File(new File(addonDir, "src/test/" + language),
 				request.getPackageName().replace(".", "/"));
@@ -195,11 +215,12 @@ public class AddonGenerator {
 		File addonResources = new File(addonDir, "src/main/resources");
 		addonResources.mkdirs();
 
-		// artifactId-context.xml
-		write(new File(addonResources, request.getArtifactId()+"-context.xml"), "spring-context.xml", model);
+		if (request.isCreateSampleCode()) {
+			File addonResourcesPackage = new File(addonResources, request.getPackageName().replace(".", "/"));
+			addonResourcesPackage.mkdirs();
 
-		// shortName-web-context.yml
-		write(new File(addonResources, request.getArtifactId()+"-web-context.xml"), "spring-web-context.xml", model);
+			write(new File(addonResourcesPackage, "edoras-addon-"+request.getShortName()+"-context.xml"), "addon-spring-context.xml", model);
+		}
 
 		// src/test/resources
 		File addonTestResources = new File(addonDir, "src/test/resources");
@@ -473,6 +494,9 @@ public class AddonGenerator {
 		if (!request.getBoms().isEmpty()) {
 			model.put("hasBoms", true);
 		}
+
+		model.put("capitalShortName", StringUtils.capitalize(request.getShortName()));
+		model.put("packagePath", request.getPackageName().replace(".", "/"));
 
 		return model;
 	}
