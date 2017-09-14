@@ -5,6 +5,7 @@
                            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
     <!-- Add additional config here -->
+    <import resource="classpath*:/edoras-addon-widget-resource-config.xml"/>
 
     <!-- Modeler palettes -->
     <bean id="paletteConfiguration" class="com.edorasware.bpm.modeler.config.PaletteConfiguration">
