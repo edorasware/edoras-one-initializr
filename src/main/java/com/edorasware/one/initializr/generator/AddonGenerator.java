@@ -299,6 +299,13 @@ public class AddonGenerator {
 		tenants.mkdirs();
 		write(new File(tenants, shortName+".json"), "tenant.json", model);
 
+		// src/main/webapp
+		File addonStarterWebappResources = new File(addonDemoDir, "src/main/webapp");
+		addonStarterWebappResources.mkdirs();
+
+		// index.html
+		write(new File(addonStarterWebappResources, "index.html"), "index.html", model);
+
 		// src/test/resources
 		File addonStarterTestResources = new File(addonDemoDir, "src/test/resources");
 		addonStarterTestResources.mkdirs();

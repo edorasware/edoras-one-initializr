@@ -1,0 +1,65 @@
+<!--
+Copyright (c) 2017 edorasware ag
+ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>edoras one</title>
+    <meta name="viewport" content="width=device-width"/>
+
+    <link rel="shortcut icon" href="./one/static/images/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" type="text/css" media="all" href="./forms/css/resources.css"/>
+    <link rel="stylesheet" type="text/css" media="all" href="./one/css/resources.css"/>
+
+    <!-- App scripts-->
+    <script type="text/javascript" src="./one/app/one.files.js"></script>
+    <link type="text/css" media="all" href="./one/css/main.css" rel="stylesheet"/>
+
+    <!--FORMS STAND ALONE Engine -->
+    <script type="text/javascript" src="./forms/app/fms.files.js"></script>
+
+    <!--EVE assets -->
+    <script type="text/javascript" src="./view-engine/app.js"></script>
+    <link rel="stylesheet" type="text/css" media="all" href="./view-engine/app.css"/>
+
+    <!-- Custom module definition -->
+    <script type="text/javascript" src="custom-module.js"></script>
+
+    <!-- Bootstrap Image Gallery styles -->
+    <link rel="stylesheet" href="./forms/libs/upload/css/external/bootstrap-image-gallery.min.css"/>
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="./forms/libs/upload/css/jquery.fileupload-ui.css"/>
+    <link rel="stylesheet" type="text/css" href="./one/css/html.css"/>
+
+    <!-- Widget hooks -->
+    <link rel="stylesheet" type="text/css" href="rest/widgets.css"/>
+    <script type="text/javascript" src="rest/widgets.js"></script>
+    <script type="text/javascript" src="widgets-module.js"></script>
+
+    <!-- Custom hooks -->
+    <link rel="stylesheet" type="text/css" href="custom.css"/>
+    <script type="text/javascript" src="custom.js"></script>
+
+</head>
+
+<body>
+<div ng-app="oneModule" class="edoras-one" ng-class="::accountCssClass">
+    <div e-application-loader>
+        <div id="mainDiv" user-changed-detection>
+            <div e-menu></div>
+            <div e-header></div>
+            <div class="viewContainer">
+                <div class="ng-view"></div>
+                <div e-actions-pane></div>
+            </div>
+        </div>
+        <div e-version></div>
+        <div e-select-dashboard-pane></div>
+    </div>
+    <div e-global-message></div>
+    <div e-notification-bar></div>
+</div>
+</body>
+</html>
