@@ -26,8 +26,9 @@ public class Default{{capitalShortName}}Service implements {{capitalShortName}}S
     }
 
     @Override
-    public void logButtonClick(GlobalId globalId) {
+    public WorkObject<?,?,?> logButtonClick(GlobalId globalId) {
         WorkObject<?,?,?> workObject = workObjectService.getWorkObject(globalId);
-        LOG.debug("Button clicked on workObject with ID: "+workObject.getId()+" and name: "+workObject.getName());
+        LOG.info("Button clicked on workObject with ID: "+workObject.getId()+" and name: "+workObject.getName());
+        return workObject;
     }
 }

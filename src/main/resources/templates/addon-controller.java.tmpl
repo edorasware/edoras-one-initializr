@@ -2,6 +2,7 @@ package {{packageName}}.controller;
 
 import {{packageName}}.service.{{capitalShortName}}Service;
 import com.edorasware.commons.core.entity.GlobalId;
+import com.edorasware.commons.core.entity.WorkObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/{{shortName}}")
 public class {{capitalShortName}}Controller {
 
     private final {{capitalShortName}}Service {{shortName}}Service;
@@ -20,7 +20,9 @@ public class {{capitalShortName}}Controller {
     }
 
     @RequestMapping(value = "/{globalId}", method = RequestMethod.GET)
-    public void logButtonClick(@PathVariable("globalId") String globalId) {
-        this.{{shortName}}Service.logButtonClick(GlobalId.get(globalId));
+    @ResponseBody
+    public WorkObject<?,?,?> logButtonClick(@PathVariable("globalId") String globalId) {
+        WorkObject<?,?,?> workObject = this.{{shortName}}Service.logButtonClick(GlobalId.get(globalId));
+        return workObject;
     }
 }

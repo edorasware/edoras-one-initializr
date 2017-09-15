@@ -1,13 +1,14 @@
 package {{packageName}}.service;
 
 import com.edorasware.commons.core.entity.GlobalId;
+import com.edorasware.commons.core.entity.WorkObject;
 
 public interface {{capitalShortName}}Service {
 
     /**
-     * Logs the id for the given work object to console
+     * Logs the id for the given work object to console and returns the work object
      * @param globalId the work object globalId
-     * @return the rating information
+     * @return work object
      */
-    void logButtonClick(GlobalId globalId);
+    WorkObject<?,?,?> logButtonClick(GlobalId globalId);
 }
