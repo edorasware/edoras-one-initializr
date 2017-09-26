@@ -162,11 +162,11 @@
                         {{#content}}
                         <div class="checkbox" data-range="{{#versionRange}}{{versionRange}}{{/versionRange}}">
                             <label>
-                                <input tabindex="15" type="checkbox" name="style" value="{{id}}">{{name}}
+                                <input tabindex="15" type="checkbox" name="style" value="{{id}}" data-transients="[{{#transientDependencies}}{{^-first}},{{/-first}}{&quot;name&quot;:&quot;{{name}}&quot;,&quot;id&quot;:&quot;{{id}}&quot;}{{/transientDependencies}}]">{{name}}
                                 <p class="help-block">{{#description}}{{.}}{{/description}}</p>
-                                {{^transients.isEmpty}}
-                                <p class="help-block" style="color: #c70d30">Depends on: {{#transients}}{{^-first}}, {{/-first}}{{.}}{{/transients}}</p>
-                                {{/transients.isEmpty}}
+                                {{^transientDependencies.isEmpty}}
+                                <p class="help-block" style="color: #c70d30">Depends on: {{#transientDependencies}}{{^-first}}, {{/-first}}{{name}}{{/transientDependencies}}</p>
+                                {{/transientDependencies.isEmpty}}
                                 {{#versionRequirement}}
                                 <p class="help-block version-requirement">requires edoras one {{.}}</p>
                                 {{/versionRequirement}}

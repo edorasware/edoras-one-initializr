@@ -198,13 +198,26 @@ public class InitializrMetadataBuilder {
 						UTF_8);
 				ObjectMapper objectMapper = new ObjectMapper();
 
-				SimpleModule module = new SimpleModule();
-				module.addDeserializer(Dependency.class, new DependencyDeserializer(Dependency.class));
-				objectMapper.registerModule(module);
-
 				InitializrMetadata anotherMetadata = objectMapper.readValue(content,
 						InitializrMetadata.class);
+
 				metadata.merge(anotherMetadata);
+
+				// Resolve transient dependencies
+				// TODO: Can lead to a invinite loop for wrong configurations
+				for (DependencyGroup dependencyGroup : metadata.getDependencies().getContent()) {
+					for (Dependency dependency : dependencyGroup.getContent()) {
+						List<Dependency> transientDependencies = new ArrayList<>();
+						for (String transientId : dependency.getTransients()) {
+							Dependency transientDependency = metadata.getDependencies().get(transientId);
+							if (transientDependency != null) {
+								transientDependencies.add(transientDependency);
+							}
+						}
+						dependency.setTransientDependencies(transientDependencies);
+					}
+				}
+
 			}
 			catch (Exception e) {
 				throw new IllegalStateException("Cannot merge", e);

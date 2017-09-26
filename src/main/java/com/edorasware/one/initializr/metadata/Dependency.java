@@ -48,7 +48,8 @@ public class Dependency extends MetadataElement implements Describable {
 
 	private List<String> aliases = new ArrayList<>();
 	private List<String> facets = new ArrayList<>();
-	private List<Dependency> transients = new ArrayList<>();
+	private List<String> transients = new ArrayList<>();
+	private List<Dependency> transientDependencies = new ArrayList<>();
 	private String groupId;
 	private String artifactId;
 	private String version;
@@ -87,7 +88,7 @@ public class Dependency extends MetadataElement implements Describable {
 		super(dependency);
 		this.aliases.addAll(dependency.aliases);
 		this.facets.addAll(dependency.facets);
-		this.transients.addAll(dependency.transients);
+		this.transientDependencies.addAll(dependency.transientDependencies);
 		this.groupId = dependency.groupId;
 		this.artifactId = dependency.artifactId;
 		this.version = dependency.version;
@@ -261,12 +262,20 @@ public class Dependency extends MetadataElement implements Describable {
 		this.facets = facets;
 	}
 
-	public List<Dependency> getTransients() {
+	public List<String> getTransients() {
 		return transients;
 	}
 
-	public void setTransients(List<Dependency> transients) {
+	public void setTransients(List<String> transients) {
 		this.transients = transients;
+	}
+
+	public List<Dependency> getTransientDependencies() {
+		return transientDependencies;
+	}
+
+	public void setTransientDependencies(List<Dependency> transientDependencies) {
+		this.transientDependencies = transientDependencies;
 	}
 
 	public String getGroupId() {

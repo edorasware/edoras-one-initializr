@@ -34,6 +34,9 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### 09-26-2017
+- Finalized code and added functionality for transient dependencies (addons that need other addons)
+
 ### 09-12-2017
 - Corrected version range parser
 - Added code for transient Plugin dependencies

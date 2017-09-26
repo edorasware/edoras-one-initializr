@@ -97,6 +97,17 @@ public class UiController {
 			all.addAll(d.getAliases());
 			result.put("keywords", StringUtils.collectionToCommaDelimitedString(all));
 		}
+		if (!CollectionUtils.isEmpty(d.getTransientDependencies())) {
+			List<Dependency> all = new ArrayList<>(d.getTransientDependencies());
+			List<Object> transients = new ArrayList<>();
+			for (Dependency transientDependency : all) {
+				Map<String, Object> aTransient = new HashMap<>();
+				aTransient.put("id", transientDependency.getId());
+				aTransient.put("name", transientDependency.getName());
+				transients.add(aTransient);
+			}
+			result.put("transients", transients);
+		}
 		return result;
 	}
 

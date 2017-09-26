@@ -142,9 +142,12 @@ $(function () {
             }
         });
     };
-    var addTransients = function(dependencyId) {
-        addTag("edoras-operator-dashboard", "Operator Dashboard");
-        $("#dependencies input[value='" + "edoras-operator-dashboard" + "']").prop('checked', true);
+    var addTransients = function(transients) {
+        for (var i = 0; i < transients.length; i++) {
+            var transient = transients[i];
+            addTag(transient.id, transient.name);
+            $("#dependencies input[value='" + transient.id + "']").prop('checked', true);
+        }
     };
     var addTag = function (id, name) {
         if ($("#starters div[data-id='" + id + "']").length == 0) {
@@ -257,7 +260,7 @@ $(function () {
         else {
             addTag(suggestion.id, suggestion.name);
             $("#dependencies input[value='" + suggestion.id + "']").prop('checked', true);
-            addTransients(suggestion.id);
+            addTransients(suggestion.transients);
         }
         $('#autocomplete').typeahead('val', '');
     });
@@ -271,7 +274,8 @@ $(function () {
         if ($(this).prop('checked')) {
             var results = starters.get(value);
             addTag(results[0].id, results[0].name);
-            addTransients(results[0].id);
+            var transients = JSON.parse($(this).attr('data-transients'));
+            addTransients(transients);
         } else {
             removeTag(value);
         }
