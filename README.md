@@ -23,6 +23,7 @@ Todo:
 - Fixing a lot of bugs
 - Support for Groovy / Kotlin
 - Refactor the UI to use AngularJS/Webpack
+- Externalize Templates and load them from GitHub
 
 ## Running form Command Line
 
@@ -33,6 +34,9 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 ```
 
 ## Change Log
+
+### 10-06-2017
+- Removed shortName-web-context.xml generation and documentation (not supported by edoras one since 2.0 anymore)
 
 ### 09-26-2017
 - Finalized code and added functionality for transient dependencies (addons that need other addons)
