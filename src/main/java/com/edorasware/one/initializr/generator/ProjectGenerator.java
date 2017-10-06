@@ -241,9 +241,9 @@ public class ProjectGenerator {
 
 		// shortName-context.xml
 		write(new File(resources, shortName+"-context.xml"), "spring-context.xml", model);
-
-		// shortName-web-context.yml
-		write(new File(resources, shortName+"-web-context.xml"), "spring-web-context.xml", model);
+//
+//		// shortName-web-context.yml // REMOVED, not supported anymore by 2.0
+//		write(new File(resources, shortName+"-web-context.xml"), "spring-web-context.xml", model);
 
 		// tenants
 		File tenants = new File(resources, "tenants");
