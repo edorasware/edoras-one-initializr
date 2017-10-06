@@ -78,9 +78,14 @@ public class VersionParser {
 		String qualifierId = matcher.group("qualifier");
 		if (StringUtils.hasText(qualifierId)) {
 			qualifier = new Version.Qualifier(qualifierId);
-			String o = qualifierId.substring(1,2);
-			if (o != null) {
-				qualifier.setVersion(Integer.valueOf(o));
+			String qualifierNumber = null;
+			for (int i = 0, n = qualifierId.length(); i < n; i++) {
+				if (Character.isDigit(qualifierId.charAt(i))) {
+					qualifierNumber = qualifierId.substring(i,qualifierId.length());
+				}
+			}
+			if (qualifierNumber != null) {
+				qualifier.setVersion(Integer.valueOf(qualifierNumber));
 			}
 		}
 		if ("x".equals(minor) || "x".equals(patch)) {
