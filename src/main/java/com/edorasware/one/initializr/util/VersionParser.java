@@ -44,7 +44,7 @@ public class VersionParser {
 	public static final VersionParser DEFAULT = new VersionParser(Collections.emptyList());
 
 	private static final Pattern VERSION_REGEX =
-			Pattern.compile("^(?<major>\\d+)\\.(?<minor>\\d+|x)\\.(?<patch>\\d+|x)(?:-(?<qualifier>[A-Z]\\d+)?)?(?:-(?<starterVersion>\\d+))?(?:-(?<starterSnapshot>SNAPSHOT))?$");
+			Pattern.compile("^(?<major>\\d+)\\.(?<minor>\\d+|x)\\.(?<patch>\\d+|x)(?:-(?<qualifier>[A-Z]+\\d+)?)?(?:-(?<starterVersion>\\d+))?(?:-(?<starterSnapshot>SNAPSHOT))?$");
 
 	private static final Pattern RANGE_REGEX =
 			Pattern.compile("(\\(|\\[)(.*),(.*)(\\)|\\])");

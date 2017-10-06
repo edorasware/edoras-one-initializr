@@ -39,6 +39,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 - Removed shortName-web-context.xml generation and documentation (not supported by edoras one since 2.0 anymore)
 - Updated SampleComponentTest for 2.0.0-RC1
 - Updated version to starter 2.0.0-RC1
+- Fixed VersionParser to allow RC1 qualifier
 
 ### 09-26-2017
 - Finalized code and added functionality for transient dependencies (addons that need other addons)
