@@ -1,11 +1,8 @@
 package {{packageName}};
 
-import com.edorasware.api.base.WorkObjectId;
 import com.edorasware.api.workobject.WorkObject;
-import com.edorasware.api.workobject.WorkObjectBuilder;
 import com.edorasware.api.workobject.WorkObjectService;
 import com.edorasware.gear.core.task.Task;
-import com.edorasware.one.document.viewer.DocumentViewerController;
 import com.edorasware.one.micro.testing.EdorasJUnit4ClassRunner;
 import com.edorasware.one.micro.testing.annotations.EdorasTest;
 import com.edorasware.one.micro.testing.annotations.EdorasTestLogin;
@@ -27,16 +24,12 @@ public class SampleComponentTest {
     @Autowired
     private WorkObjectService workObjectService;
 
-    // You can inject beans from rest service context (edoras one dispatcher servlet context)
-    @Autowired
-    private DocumentViewerController documentViewerController;
-
     @Test
-    public void addTask() {
+    public void createTask() {
         final String taskName = "taskName";
-        WorkObjectBuilder builder = workObjectService.builder(Task.ENTITY_TYPE);
-        WorkObjectId taksId = workObjectService.addWorkObject(builder.name(taskName).build()).getId();
-        WorkObject task = workObjectService.findWorkObject(taksId).get();
-        assertEquals("The task name must be equal", taskName, task.getName());
+        WorkObject createdTask = WorkObject.builder().type(Task.ENTITY_TYPE).name(taskName).build();
+        String id = workObjectService.create(createdTask);
+        WorkObject foundTask = workObjectService.findWorkObject(id).get();
+        assertEquals("The task name must be equal", taskName, foundTask.getName());
     }
 }
