@@ -121,8 +121,8 @@
     "description": null,
     "content": [
       {
-        "name": "2.0.0-M6",
-        "id": "2.0.0-M6-2",
+        "name": "2.0.0-RC1",
+        "id": "2.0.0-RC1",
         "default": false
       },
       {
