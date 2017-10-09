@@ -35,6 +35,9 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### 10-08-2017
+- Updated versions to starter 2.0.0-RC1-2
+
 ### 10-07-2017
 - Updated versions to starter 2.0.0-RC1-1
 
