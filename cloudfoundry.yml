@@ -4,3 +4,4 @@ applications:
   memory: 512M
   instances: 1
   buildpack: java_buildpack
+  path: ./target/edoras-one-initializr-1.0.0-SNAPSHOT.war
