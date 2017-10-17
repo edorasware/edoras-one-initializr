@@ -1,0 +1,5 @@
+---
+applications:
+- name: edoras-one-initializr2
+  memory: 512M
+  instances: 1
