@@ -1,6 +1,6 @@
 ---
 applications:
-- name: edoras-one-initializr2
+- name: edoras-one-initializr
   memory: 1G
   instances: 1
   path: target/edoras-one-initializr-1.0.0-SNAPSHOT.war

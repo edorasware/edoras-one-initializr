@@ -37,6 +37,8 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ### 10-17-2017
 - First tests to switch to flowable Pivotal account
+- Finally switched to flowable Pivotal account.
+- Travis Build with manifest instead of maven plugin for Cloud Foundry deployment
 
 ### 10-13-2017
 - Update versions to starter 1.9.10
