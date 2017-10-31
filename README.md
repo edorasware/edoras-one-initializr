@@ -1,4 +1,4 @@
-# edoras-one-initializr [![Build Status](https://travis-ci.org/edorasware/edoras-one-initializr.svg?branch=master)](https://travis-ci.org/edorasware/edoras-one-initializr) [![Build Status](https://travis-ci.org/edorasware/edoras-one-initializr.svg?branch=master)](https://travis-ci.org/edorasware/edoras-one-initializr)
+# edoras-one-initializr [![Build Status](https://travis-ci.org/edorasware/edoras-one-initializr.svg?branch=master)](https://travis-ci.org/edorasware/edoras-one-initializr)
 See https://edoras-one-initializr.cfapps.io
 
 Still in early alpha state. 
@@ -33,6 +33,10 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 ```
 
 ## Change Log
+
+
+### 10-31-2017
+- Update versions to starter 1.9.11 and 2.0.0-RC2
 
 ### 10-13-2017
 - Update versions to starter 1.9.10

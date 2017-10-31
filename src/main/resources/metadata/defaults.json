@@ -121,14 +121,24 @@
     "description": null,
     "content": [
       {
+        "name": "2.0.0-RC2",
+        "id": "2.0.0-RC2",
+        "default": false
+      },
+      {
         "name": "2.0.0-RC1",
         "id": "2.0.0-RC1-2",
         "default": false
       },
       {
+        "name": "1.6.11",
+        "id": "1.6.11",
+        "default": true
+      },
+      {
         "name": "1.6.10",
         "id": "1.6.10",
-        "default": true
+        "default": false
       },
       {
         "name": "1.6.9",
