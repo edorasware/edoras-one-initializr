@@ -27,7 +27,7 @@ public class SampleComponentTest {
     @Test
     public void createTask() {
         final String taskName = "taskName";
-        WorkObject createdTask = WorkObject.builder().type(Task.ENTITY_TYPE).name(taskName).build();
+        WorkObject createdTask = WorkObject.builder().type(WorkObjectTypes.TASK_TYPE).name(taskName).build();
         String id = workObjectService.create(createdTask);
         WorkObject foundTask = workObjectService.findWorkObject(id).get();
         assertEquals("The task name must be equal", taskName, foundTask.getName());
