@@ -310,10 +310,5 @@
         ]
       }
     ]
-  },
-  "repositories": [
-    {
-      "url": "https://repo.edorasware.com/libs-release-local/"
-    }
-  ]
+  }
 }
