@@ -35,9 +35,11 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### 11-01-2017
+- Removed 1.6.11 release (quality reasons)
 
 ### 10-31-2017
-- Update versions to starter 1.9.11 and 2.0.0-RC2
+- Update versions to starter 1.6.11 and 2.0.0-RC2
 
 ### 10-17-2017
 - First tests to switch to flowable Pivotal account

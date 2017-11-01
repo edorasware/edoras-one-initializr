@@ -126,19 +126,9 @@
         "default": false
       },
       {
-        "name": "2.0.0-RC1",
-        "id": "2.0.0-RC1-2",
-        "default": false
-      },
-      {
-        "name": "1.6.11",
-        "id": "1.6.11",
-        "default": true
-      },
-      {
         "name": "1.6.10",
         "id": "1.6.10",
-        "default": false
+        "default": true
       },
       {
         "name": "1.6.9",
@@ -217,7 +207,7 @@
             "mappings": [
               {
                 "versionRange": "[1.6.0,1.6.999]",
-                "version": "1.2.0"
+                "version": "1.2.1"
               }
             ],
             "versionRange": "[1.6.0,1.6.999]"
@@ -320,5 +310,10 @@
         ]
       }
     ]
-  }
+  },
+  "repositories": [
+    {
+      "url": "https://repo.edorasware.com/libs-release-local/"
+    }
+  ]
 }
