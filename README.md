@@ -35,6 +35,12 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### 11-16-2017
+- Update versions to starter 2.0.0
+- Removed versions 1.6.8 and 1.6.9 (deprecated)
+- Added edoras one repository configuration to pom.xml
+- Bugfix: Generated test class missed WorkObjectType import
+
 ### 11-01-2017
 - Removed 1.6.11 release (quality reasons)
 

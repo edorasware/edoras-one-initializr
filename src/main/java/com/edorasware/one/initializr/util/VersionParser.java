@@ -79,11 +79,15 @@ public class VersionParser {
 		if (StringUtils.hasText(qualifierId)) {
 			qualifier = new Version.Qualifier(qualifierId);
 			String qualifierNumber = null;
+			int qualifierNumberIndex = 0;
 			for (int i = 0, n = qualifierId.length(); i < n; i++) {
 				if (Character.isDigit(qualifierId.charAt(i))) {
 					qualifierNumber = qualifierId.substring(i,qualifierId.length());
+					qualifierNumberIndex = i;
+					break;
 				}
 			}
+			qualifier.setQualifier(qualifierId.substring(0, qualifierNumberIndex));
 			if (qualifierNumber != null) {
 				qualifier.setVersion(Integer.valueOf(qualifierNumber));
 			}

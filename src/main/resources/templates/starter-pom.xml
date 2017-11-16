@@ -241,9 +241,13 @@
 			{{/kotlin}}
 		</plugins>
 	</build>
-{{#hasRepositories}}
 
 	<repositories>
+		<repository>
+			<id>edorasware</id>
+			<url>https://repo.edorasware.com/libs-release-local/</url>
+		</repository>
+		{{#hasRepositories}}
 		{{#repositoryValues}}
 		<repository>
 			<id>{{key}}</id>
@@ -254,7 +258,7 @@
 			</snapshots>
 		</repository>
 		{{/repositoryValues}}
+		{{/hasRepositories}}
 	</repositories>
-{{/hasRepositories}}
 
 </project>

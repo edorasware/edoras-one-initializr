@@ -121,23 +121,13 @@
     "description": null,
     "content": [
       {
-        "name": "2.0.0-RC2",
-        "id": "2.0.0-RC2",
-        "default": false
+        "name": "2.0.0",
+        "id": "2.0.0",
+        "default": true
       },
       {
         "name": "1.6.10",
         "id": "1.6.10",
-        "default": true
-      },
-      {
-        "name": "1.6.9",
-        "id": "1.6.9-1",
-        "default": false
-      },
-      {
-        "name": "1.6.8",
-        "id": "1.6.8",
         "default": false
       }
     ]
@@ -189,9 +179,12 @@
               {
                 "versionRange": "[1.6.0,1.6.999]",
                 "version": "1.0.22"
+              },
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.0-RC2-SNAPSHOT"
               }
-            ],
-            "versionRange": "[1.6.0,1.6.999]"
+            ]
           }
         ]
       },
@@ -264,9 +257,29 @@
               {
                 "versionRange": "[1.6.0,1.6.999]",
                 "version": "1.1.0"
+              },
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.0-RC2-SNAPSHOT"
               }
-            ],
-            "versionRange": "[1.6.0,1.6.999]"
+            ]
+          },
+          {
+            "name": "Gear Search",
+            "id": "edoras-gear-search",
+            "description": "Elasticsearch indexing for work objects",
+            "groupId": "com.edorasware.one",
+            "artifactId": "edoras-gear-search",
+            "mappings": [
+              {
+                "versionRange": "[1.6.10,1.6.999]",
+                "version": "1.6.10"
+              },
+              {
+                "versionRange": "[2.0.0,2.0.999]",
+                "version": "2.0.0"
+              }
+            ]
           }
         ]
       },
@@ -286,9 +299,12 @@
               {
                 "versionRange": "[1.6.0,1.6.999]",
                 "version": "1.1.14"
+              },
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.0-RC2-SNAPSHOT"
               }
-            ],
-            "versionRange": "[1.6.0,1.6.999]"
+            ]
           },
           {
             "name": "External System Integration",
@@ -303,9 +319,12 @@
               {
                 "versionRange": "[1.6.0,1.6.999]",
                 "version": "1.1.14"
+              },
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.0-RC2-SNAPSHOT"
               }
-            ],
-            "versionRange": "[1.6.0,1.6.999]"
+            ]
           }
         ]
       }
