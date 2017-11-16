@@ -67,7 +67,7 @@ public class VersionParserTest {
             assertTrue(version.getMinor().equals(0) || version.getMinor().equals(999));
             assertTrue(version.getPatch().equals(0) || version.getPatch().equals(999));
             if (version.getQualifier() != null && !version.getQualifier().getQualifier().isEmpty()) {
-                assertTrue(version.getQualifier().getQualifier().equals("M6"));
+                assertTrue(version.getQualifier().getQualifier().equals("M"));
                 assertTrue(version.getQualifier().getVersion().equals(6) || version.getQualifier().getVersion().equals(999));
             }
         }
