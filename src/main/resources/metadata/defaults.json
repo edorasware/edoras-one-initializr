@@ -325,7 +325,25 @@
                 "version": "2.0.0-RC2-SNAPSHOT"
               }
             ]
-          }
+          },
+          {
+            "name": "Documentation",
+            "content": [
+              {
+                "name": "REST API Documentation",
+                "id": "edoras-addon-rest-doc",
+                "description": "Addon that provides documentation for the edoras one REST APIs (e.g. Swagger)",
+                "groupId": "com.edorasware.addons",
+                "artifactId": "edoras-addon-rest-doc",
+                "mappings": [
+                  {
+                    "versionRange": "[1.9.999,2.0.999]",
+                    "version": "2.0.0-SNAPSHOT"
+                  }
+                ]
+              }
+            ]
+          },
         ]
       }
     ]

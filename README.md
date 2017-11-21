@@ -35,6 +35,9 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### TODO
+- Added REST Documentation addon
+
 ### 11-16-2017
 - Update versions to starter 2.0.0
 - Removed versions 1.6.8 and 1.6.9 (deprecated)
