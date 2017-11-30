@@ -38,6 +38,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 ### 11-30-2017
 - Update versions to starter 2.0.0-2
 - Added REST Documentation addon
+- Added edoras one repository configuration to build.gradle
 
 ### 11-16-2017
 - Update versions to starter 2.0.0

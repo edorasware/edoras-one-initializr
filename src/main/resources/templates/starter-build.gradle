@@ -43,6 +43,13 @@ compileTestKotlin {
 repositories {
 	mavenCentral()
 	mavenLocal()
+	maven {
+    	url "https://repo.edorasware.com/libs-release-local/"
+    	credentials {
+    		username DOWNLOAD_REPO_USERNAME
+    		password DOWNLOAD_REPO_PASSWORD
+    	}
+    }
 	{{#repositoryValues}}
 	maven { url "{{value.url}}" }
 	{{/repositoryValues}}
