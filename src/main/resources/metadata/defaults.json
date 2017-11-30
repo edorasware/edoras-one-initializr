@@ -122,7 +122,7 @@
     "content": [
       {
         "name": "2.0.0",
-        "id": "2.0.0",
+        "id": "2.0.0-2",
         "default": true
       },
       {
@@ -183,6 +183,19 @@
               {
                 "versionRange": "[1.9.999,2.0.999]",
                 "version": "2.0.0-RC2-SNAPSHOT"
+              }
+            ]
+          },
+          {
+            "name": "Widget Resources",
+            "id": "edoras-addon-widget-resource",
+            "description": "Addon with common functionalities to service widget resources to the frontend. Needed in combination with addons providing frontend widgets",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-widget-resource",
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.0-SNAPSHOT"
               }
             ]
           }
@@ -325,25 +338,25 @@
                 "version": "2.0.0-RC2-SNAPSHOT"
               }
             ]
-          },
+          }
+        ]
+      },
+      {
+        "name": "Documentation",
+        "content": [
           {
-            "name": "Documentation",
-            "content": [
+            "name": "REST API Documentation",
+            "id": "edoras-addon-rest-doc",
+            "description": "Addon that provides documentation for the edoras one REST APIs (e.g. Swagger)",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-rest-doc",
+            "mappings": [
               {
-                "name": "REST API Documentation",
-                "id": "edoras-addon-rest-doc",
-                "description": "Addon that provides documentation for the edoras one REST APIs (e.g. Swagger)",
-                "groupId": "com.edorasware.addons",
-                "artifactId": "edoras-addon-rest-doc",
-                "mappings": [
-                  {
-                    "versionRange": "[1.9.999,2.0.999]",
-                    "version": "2.0.0-SNAPSHOT"
-                  }
-                ]
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.0-SNAPSHOT"
               }
             ]
-          },
+          }
         ]
       }
     ]
