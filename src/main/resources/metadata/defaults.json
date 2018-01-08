@@ -121,8 +121,8 @@
     "description": null,
     "content": [
       {
-        "name": "2.0.0",
-        "id": "2.0.0-2",
+        "name": "2.0.1",
+        "id": "2.0.1",
         "default": true
       },
       {
@@ -272,6 +272,23 @@
             "description": "Allows to update logback based logging configuration at runtime",
             "groupId": "com.edorasware.addons",
             "artifactId": "edoras-operator-dashboard-plugin-logback",
+            "transients": [
+              "edoras-operator-dashboard-2"
+            ],
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.0-SNAPSHOT"
+              }
+            ],
+            "versionRange": "[1.9.999,2.0.999]"
+          },
+          {
+            "name": "REST Endpoints Plugin for Operator Dashboard",
+            "id": "edoras-operator-dashboard-plugin-resthealth-2",
+            "description": "Allows to define, call and test external REST endpoints",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-operator-dashboard-plugin-resthealth",
             "transients": [
               "edoras-operator-dashboard-2"
             ],

@@ -1,7 +1,12 @@
 experimental:
+{{#isEdorasOne10}}
   form:
     live:
       preview: true
+{{/isEdorasOne10}}
+{{#isEdorasOne20}}
+  enable-form-live-preview: true
+{{/isEdorasOne20}}
 
 #transfer:
 #  outgoing:
