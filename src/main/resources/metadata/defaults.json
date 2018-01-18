@@ -121,8 +121,8 @@
     "description": null,
     "content": [
       {
-        "name": "2.0.1",
-        "id": "2.0.1",
+        "name": "2.0.2",
+        "id": "2.0.2",
         "default": true
       },
       {
@@ -182,7 +182,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.0-RC2-SNAPSHOT"
+                "version": "2.0.2"
               }
             ]
           },
@@ -195,7 +195,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.0-SNAPSHOT"
+                "version": "2.0.2"
               }
             ]
           }
@@ -321,7 +321,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.0-RC2-SNAPSHOT"
+                "version": "2.0.1"
               }
             ]
           },
@@ -338,7 +338,7 @@
               },
               {
                 "versionRange": "[2.0.0,2.0.999]",
-                "version": "2.0.0"
+                "version": "2.0.2"
               }
             ]
           }
@@ -363,7 +363,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.0-RC2-SNAPSHOT"
+                "version": "2.0.1"
               }
             ]
           },
@@ -383,7 +383,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.0-RC2-SNAPSHOT"
+                "version": "2.0.1"
               }
             ]
           }
@@ -401,7 +401,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.0-SNAPSHOT"
+                "version": "2.0.2"
               }
             ]
           }
