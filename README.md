@@ -35,6 +35,10 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### 01-19-2018
+- Update version to starter 1.6.13
+- Updated all addons to newest version (2.0.2)
+
 ### 01-18-2018
 - Update versions to starter 2.0.2
 - Updated most addons to newest version (2.0.1 or 2.0.2)
