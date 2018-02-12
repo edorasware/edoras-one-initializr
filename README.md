@@ -35,6 +35,13 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### 02-12-2018
+- Update version to starter 2.0.3-1
+- Updated all addons to newest version (2.0.3)
+- Limited Gear Search Addon to 1.6.x versions
+- Added Index Core Addon (edoras-one-index)
+- Added Gear Search (1.6) or Index Core (2.0) transients to Index Addon
+
 ### 01-19-2018
 - Update version to starter 1.6.13
 - Updated all addons to newest version (2.0.2)

@@ -121,8 +121,8 @@
     "description": null,
     "content": [
       {
-        "name": "2.0.2",
-        "id": "2.0.2",
+        "name": "2.0.3",
+        "id": "2.0.3-1",
         "default": true
       },
       {
@@ -182,7 +182,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.2"
+                "version": "2.0.3"
               }
             ]
           },
@@ -195,7 +195,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.2"
+                "version": "2.0.3"
               }
             ]
           }
@@ -306,24 +306,40 @@
         "name": "Search",
         "content": [
           {
-            "name": "Index",
-            "id": "edoras-addon-index",
+            "name": "Index Addon",
+            "id": "edoras-addon-index-16",
             "description": "Index Addon for elasticsearch index configuration",
             "groupId": "com.edorasware.addons",
             "artifactId": "edoras-addon-index",
             "transients": [
-              "edoras-addon-commons"
+              "edoras-addon-commons",
+              "edoras-gear-search"
             ],
             "mappings": [
               {
                 "versionRange": "[1.6.0,1.6.999]",
                 "version": "1.1.0"
-              },
+              }
+            ],
+            "versionRange": "[1.6.0,1.6.999]"
+          },
+          {
+            "name": "Index Addon",
+            "id": "edoras-addon-index-20",
+            "description": "Index Addon for elasticsearch index configuration",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-index",
+            "transients": [
+              "edoras-addon-commons",
+              "edoras-one-index"
+            ],
+            "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.2"
+                "version": "2.0.3"
               }
-            ]
+            ],
+            "versionRange": "[1.9.999,2.0.999]"
           },
           {
             "name": "Gear Search",
@@ -335,12 +351,23 @@
               {
                 "versionRange": "[1.6.10,1.6.999]",
                 "version": "1.6.10"
-              },
-              {
-                "versionRange": "[2.0.0,2.0.999]",
-                "version": "2.0.2"
               }
-            ]
+            ],
+            "versionRange": "[1.6.0,1.6.999]"
+          },
+          {
+            "name": "Index Core",
+            "id": "edoras-one-index",
+            "description": "Elasticsearch indexing for work objects",
+            "groupId": "com.edorasware.one",
+            "artifactId": "edoras-one-index",
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.3"
+              }
+            ],
+            "versionRange": "[1.9.999,2.0.999]"
           }
         ]
       },
@@ -363,7 +390,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.2"
+                "version": "2.0.3"
               }
             ]
           },
@@ -383,7 +410,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.2"
+                "version": "2.0.3"
               }
             ]
           }
@@ -401,7 +428,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.2"
+                "version": "2.0.3"
               }
             ]
           }
