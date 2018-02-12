@@ -41,6 +41,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 - Limited Gear Search Addon to 1.6.x versions
 - Added Index Core Addon (edoras-one-index)
 - Added Gear Search (1.6) or Index Core (2.0) transients to Index Addon
+- Added Bootapp Addon
 
 ### 01-19-2018
 - Update version to starter 1.6.13

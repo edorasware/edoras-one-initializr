@@ -413,6 +413,20 @@
                 "version": "2.0.3"
               }
             ]
+          },
+          {
+            "name": "Bootapp",
+            "id": "edoras-addon-bootapp",
+            "description": "Allows work objects of any kind (defined by by JSON file) to be created at tenant initialization",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-bootapp",
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.3"
+              }
+            ],
+            "versionRange": "[1.9.999,2.0.999]"
           }
         ]
       },
