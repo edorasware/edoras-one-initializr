@@ -1,10 +1,9 @@
-edoras:
-  addons:
-    widget:
-      resource:
-        javascript:
-          cached: false
-          concatOnly: true
-        css:
-          cached: false
-          concatOnly: true
+addons:
+  widget:
+    resource:
+      javascript:
+        cached: false
+        concatOnly: true
+      css:
+        cached: false
+        concatOnly: true
