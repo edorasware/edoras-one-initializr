@@ -149,6 +149,18 @@ $(function () {
             $("#dependencies input[value='" + transient.id + "']").prop('checked', true);
         }
     };
+    var updateIfAddon = function () {
+        if ($("#type").val() == 'addon-project') {
+            $("#groupId").attr('value', "com.edorasware.addons");
+            $("#artifactId").attr('value', "edoras-addon-".concat($("#shortName").val()));
+            $('#edorasoneVersion').val("1.6.9-1");
+            $("#edorasoneVersion").attr('disabled', true);
+        } else {
+            $("#edorasoneVersion").attr('disabled', false);
+            $("#groupId").attr('disabled', false);
+            $("#artifactId").attr('disabled', false);
+        }
+    };
     var addTag = function (id, name) {
         if ($("#starters div[data-id='" + id + "']").length == 0) {
             $("#starters").append("<div class='tag' data-id='" + id + "'>" + name +
@@ -179,6 +191,7 @@ $(function () {
     refreshDependencies($("#edorasoneVersion").val());
     $("#type").on('change', function () {
         $("#form").attr('action', $(this.options[this.selectedIndex]).attr('data-action'))
+        updateIfAddon();
     });
     $("#groupId").on("change", function() {
         generatePackageName();
@@ -187,8 +200,9 @@ $(function () {
         $("#name").val($(this).val());
         $("#baseDir").attr('value', this.value)
     });
-    $("#shortName").on('change', function () {
+    $("#shortName").on('keyup', function () {
         generatePackageName();
+        updateIfAddon();
     });
     $("#createSampleCodeBox").on('change', function () {
         if(this.checked) {

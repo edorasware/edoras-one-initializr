@@ -52,10 +52,9 @@ The name of this file is given by the project.name property in application.yml (
 
 This file contains all project specific but environment independent configuration options. Examples could be addon configurations or the help URL.
 
-Most properties don't have to be set because they have appropriate default values. See [one.yml](#### one.yml) for an overview of the default property values.
+Most properties don't have to be set because they have appropriate default values. See [one.yml] for an overview of the default property values.
 
 Example:
-
 ```yaml
 addons:
   bootapp:
@@ -65,13 +64,12 @@ addons:
 
 #### {{shortName}}-dev.yml ({shortName}-{env}.yml)
 
-The name of this file is given by the ```project.name``` property in application.yml (the {shortName} property of the Initilizr).
-There can be multiple files. The {env} part is defined by the environment set by an appropriate ```-Denv={env}``` JVM parameter (default is 'dev').
+The name of this file is given by the project.name property in application.yml (the {shortName} property of the Maven archetype).
+There can be multiple files. The {env} part is defined by the environment set by an appropriate -Denv={env} JVM parameter (default is 'dev').
 
-These files contain environment specific property values like. e.g.: database connections or the application endpoint.
+These files contains environment specific property values like. e.g.: database connections or the application endpoint.
 
 Example:
-
 ```yaml
 dataSource:
   driverClassName: org.postgresql.Driver
@@ -105,6 +103,13 @@ for all mandatory edoras one properties. All these values can be overridden by t
 This Spring context file is automatically loaded by the edoras one Spring application context and allows to define project specific Spring beans and configuration.
 It is loaded after the edoras one context files so it is possible to override default edoras one beans by reusing their IDs.
 
+#### {{shortName}}-web-context.xml ({shortName}-web-context.xml)
+
+This Spring context file is automatically loaded by the edoras one Spring servlet context and allows to define project specific Spring beans and configuration
+that apply to the edoras one servlet (/rest/ URL)
+
+It is loaded after the edoras one context files so it is possible to override default edoras one beans by reusing their IDs.
+
 #### test-{{shortName}}-context.xml (test-{shortName}-context.xml)
 
 This Spring context file is automatically loaded by the edoras one Spring application context and allows to define project specific Spring beans and configuration.
@@ -115,14 +120,13 @@ It is loaded after the edoras one context files so it is possible to override de
 
 ### Other configuration files
 
-#### application-logback.xml
+#### logback.xml
 
 This is the configuration file for the logback logging system.
-It is included into the default logback.xml configuration file provided by by starter. application.logback.xml allow to provide additional logging configuration
-such as additional loggers or appenders.
+The it includes by default a configuration for a console appender. A file appender can be added by uncommenting the appropriate lines.
+The appender configuration provides appropriate default values. They can be overridden or an entirely new configuration can be provided.
 
 #### tenants/{{shortName}}.json ({shortName.}json)
 
 The name of this file is given by the project.name property in application.yml (the {shortName} property of the Maven archetype).
-The files contains the tenant configuration that will be created at database initialisation of edoras one. Keep in mind to update the
-tenantId if you create multiple tenants.
+The files contains the tenant configuration that will be created at database initialisation of edoras one.

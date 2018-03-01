@@ -16,15 +16,11 @@
 
 package com.edorasware.one.initializr.web.autoconfigure;
 
-import com.edorasware.one.initializr.generator.ProjectGenerator;
-import com.edorasware.one.initializr.generator.ProjectRequestPostProcessor;
-import com.edorasware.one.initializr.generator.ProjectRequestResolver;
-import com.edorasware.one.initializr.generator.ProjectResourceLocator;
+import com.edorasware.one.initializr.generator.*;
 import com.edorasware.one.initializr.metadata.*;
 import com.edorasware.one.initializr.util.TemplateRenderer;
 import com.edorasware.one.initializr.web.controller.MainController;
 import com.edorasware.one.initializr.web.support.DefaultDependencyMetadataProvider;
-import com.edorasware.one.initializr.web.support.OfflineInitializrMetadataBuilder;
 import com.edorasware.one.initializr.web.ui.UiController;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
@@ -81,9 +77,10 @@ public class InitializrAutoConfiguration {
 			InitializrMetadataProvider metadataProvider,
 			ResourceUrlProvider resourceUrlProvider,
 			ProjectGenerator projectGenerator,
+			AddonGenerator addonGenerator,
 			DependencyMetadataProvider dependencyMetadataProvider) {
 		return new MainController(metadataProvider, resourceUrlProvider
-				, projectGenerator, dependencyMetadataProvider);
+				, projectGenerator, addonGenerator, dependencyMetadataProvider);
 	}
 
 	@Bean
@@ -97,6 +94,12 @@ public class InitializrAutoConfiguration {
 	@ConditionalOnMissingBean
 	public ProjectGenerator projectGenerator() {
 		return new ProjectGenerator();
+	}
+
+	@Bean
+	@ConditionalOnMissingBean
+	public AddonGenerator addonGenerator() {
+		return new AddonGenerator();
 	}
 
 	@Bean
