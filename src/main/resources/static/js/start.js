@@ -153,12 +153,12 @@ $(function () {
         if ($("#type").val() == 'addon-project') {
             $("#groupId").attr('value', "com.edorasware.addons");
             $("#artifactId").attr('value', "edoras-addon-".concat($("#shortName").val()));
-            $('#edorasoneVersion').val("1.6.9-1");
+            $('#edorasoneVersion').val($("#edorasoneVersion option:first").val());
             $("#edorasoneVersion").attr('disabled', true);
+            $("#autocomplete").attr('disabled', true);
         } else {
             $("#edorasoneVersion").attr('disabled', false);
-            $("#groupId").attr('disabled', false);
-            $("#artifactId").attr('disabled', false);
+            $("#autocomplete").attr('disabled', false);
         }
     };
     var addTag = function (id, name) {

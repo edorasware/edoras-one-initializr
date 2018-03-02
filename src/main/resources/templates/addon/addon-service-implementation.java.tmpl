@@ -1,0 +1,36 @@
+package {{packageName}}.service.impl;
+
+import {{packageName}}.service.{{capitalShortName}}AddonService;
+import com.edorasware.api.expression.ExpressionBean;
+import com.edorasware.api.workobject.WorkObject;
+import com.edorasware.api.workobject.WorkObjectService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+/**
+ * Default implementation for learning purposes.
+ */
+@Service
+@Transactional
+@ExpressionBean
+public class Default{{capitalShortName}}AddonService implements {{capitalShortName}}AddonService {
+
+    private static final Logger LOG = LoggerFactory.getLogger(Default{{capitalShortName}}AddonService.class);
+
+    private final WorkObjectService workObjectService;
+
+    @Autowired
+    public Default{{capitalShortName}}AddonService(WorkObjectService workObjectService) {
+        this.workObjectService = workObjectService;
+    }
+
+    @Override
+    public WorkObject logButtonClick(String globalId) {
+        WorkObject workObject = workObjectService.getWorkObject(globalId);
+        LOG.info("Button clicked on workObject with ID: "+workObject.getId()+" and name: "+workObject.getName());
+        return workObject;
+    }
+}

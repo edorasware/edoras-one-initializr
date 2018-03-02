@@ -23,9 +23,22 @@
 		{{#buildPropertiesVersions}}
 		<{{key}}>{{#value}}{{.}}{{/value}}</{{key}}>
 		{{/buildPropertiesVersions}}
-		<com.edorasware.one.version>1.6.9</com.edorasware.one.version>
-		<org.springframework.version>3.2.18.RELEASE</org.springframework.version>
+		<com.edorasware.one.version>{{edorasOneVersionWithoutStarter}}</com.edorasware.one.version>
+		<org.springframework.version>4.3.9.RELEASE</org.springframework.version>
 	</properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- Imports the bill-of-materials POM. -->
+            <dependency>
+                <groupId>com.edorasware.one</groupId>
+                <artifactId>edoras-one-starter-bom</artifactId>
+                <version>${com.edorasware.one.starter.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>

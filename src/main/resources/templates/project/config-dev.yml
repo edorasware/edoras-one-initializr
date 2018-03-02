@@ -8,6 +8,12 @@ experimental:
   enable-form-live-preview: true
 {{/isEdorasOne20}}
 
+{{#isEdorasOne20}}
+datasource:
+  h2-console:
+    enabled: true
+{{/isEdorasOne20}}
+
 #transfer:
 #  outgoing:
 #    location: ${project.dir}/src/main/resources/apps

@@ -35,6 +35,13 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### TODO
+- Update version to starter 2.0.4-SNAPSHOT
+- Added possibility to create addon projects for edoras one 2.0
+- Added sample code for projects
+- Added sample code for addon projects
+- Moved sample code generation checkbox to light view, unchecked by default now
+
 ### 02-12-2018
 - Update version to starter 2.0.3-1
 - Updated all addons to newest version (2.0.3)
@@ -98,8 +105,6 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 - Finalized code and added functionality for transient dependencies (addons that need other addons)
 
 ### 09-12-2017
-- Added possibility to create addon projects
-- Added sample code for addon projects
 - Corrected version range parser
 - Added code for transient Plugin dependencies
 - Moved sample code checkbox to enhanced section

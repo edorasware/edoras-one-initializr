@@ -1,0 +1,13 @@
+package {{packageName}}.service;
+
+import com.edorasware.api.workobject.WorkObject;
+
+public interface {{capitalShortName}}AddonService {
+
+    /**
+     * Logs the id for the given work object to console and returns the work object
+     * @param globalId the work object globalId
+     * @return work object
+     */
+    WorkObject logButtonClick(String globalId);
+}

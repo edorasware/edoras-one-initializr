@@ -29,6 +29,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.util.Assert;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.util.StreamUtils;
+import org.springframework.util.StringUtils;
 
 import java.beans.PropertyDescriptor;
 import java.io.File;
@@ -60,10 +61,8 @@ public class ProjectGenerator {
 	@Autowired
 	private ProjectRequestResolver requestResolver;
 
-	@Autowired
-	private TemplateRenderer templateRenderer = new TemplateRenderer();
+	private TemplateRenderer templateRenderer = new TemplateRenderer(TemplateRenderer.mustacheCompiler("classpath:/templates/project/"));
 
-	@Autowired
 	private ProjectResourceLocator projectResourceLocator = new ProjectResourceLocator();
 
 	@Value("${TMPDIR:.}/initializr")
@@ -155,7 +154,26 @@ public class ProjectGenerator {
 	 */
 	public File generateProjectStructure(ProjectRequest request) {
 		try {
-			return doGenerateProjectStructure(request);
+			// manually set some properties, seems not to be stable in javascript
+			// request.setBaseDir(request.getArtifactId());
+			request.setPackageName(request.getGroupId().concat(".").concat(request.getShortName()));
+
+			// root dir
+			File rootDir;
+			try {
+				rootDir = File.createTempFile("tmp", "", getTemporaryDirectory());
+			}
+			catch (IOException e) {
+				throw new IllegalStateException("Cannot create temp dir", e);
+			}
+			addTempFile(rootDir.getName(), rootDir);
+			rootDir.delete();
+			rootDir.mkdirs();
+			File dir = initializerProjectDir(rootDir, request);
+
+			publishProjectGeneratedEvent(request);
+
+			return doGenerateProjectStructure(request, dir);
 		}
 		catch (InitializrException ex) {
 			publishProjectFailedEvent(request, ex);
@@ -163,25 +181,9 @@ public class ProjectGenerator {
 		}
 	}
 
-	protected File doGenerateProjectStructure(ProjectRequest request) {
-		// manually set some properties, seems not to be stable in javascript
-//		request.setBaseDir(request.getArtifactId());
-		request.setPackageName(request.getGroupId().concat(".").concat(request.getShortName()));
+	public File doGenerateProjectStructure(ProjectRequest request, File dir) {
 
 		Map<String, Object> model = resolveModel(request);
-
-		// root dir
-		File rootDir;
-		try {
-			rootDir = File.createTempFile("tmp", "", getTemporaryDirectory());
-		}
-		catch (IOException e) {
-			throw new IllegalStateException("Cannot create temp dir", e);
-		}
-		addTempFile(rootDir.getName(), rootDir);
-		rootDir.delete();
-		rootDir.mkdirs();
-		File dir = initializerProjectDir(rootDir, request);
 
 		// pom.xml / build.properties
 		if (isGradleBuild(request)) {
@@ -202,9 +204,39 @@ public class ProjectGenerator {
 		String language = request.getLanguage();
 
 		// src/main/java
-		File src = new File(new File(dir, "src/main/" + language),
-				request.getPackageName().replace(".", "/"));
-		src.mkdirs();
+		File javaSrc = new File(dir, "src/main/" + language);
+		File packageSrc = new File(javaSrc, request.getPackageName().replace(".", "/"));
+		packageSrc.mkdirs();
+
+		if (request.isCreateSampleCode()) {
+
+			String capitalShortName = StringUtils.capitalize(request.getShortName());
+
+			// Application Context Configuration
+			File configSrc = new File(javaSrc, "com/edorasware/config/custom");
+			configSrc.mkdirs();
+			write(new File(configSrc, capitalShortName+"Configuration."+language), "sample-configuration." + language + ".tmpl", model);
+
+			// Rest Context Configuration
+			File restConfigSrc = new File(javaSrc, "com/edorasware/config/rest");
+			restConfigSrc.mkdirs();
+			write(new File(restConfigSrc, capitalShortName+"RestConfiguration."+language), "sample-rest-configuration." + language + ".tmpl", model);
+
+			// Controller
+			File sampleDemoController = new File(packageSrc, "controller");
+			sampleDemoController.mkdirs();
+			write(new File(sampleDemoController, capitalShortName+"Controller." + language), "sample-controller." + language + ".tmpl", model);
+
+			// Service Interface
+			File sampleDemoService = new File(packageSrc, "service");
+			sampleDemoService.mkdirs();
+			write(new File(sampleDemoService, capitalShortName+"Service." + language), "sample-service-interface." + language + ".tmpl", model);
+
+			//Service Implementation
+			File sampleDemoServiceImpl = new File(sampleDemoService, "impl");
+			sampleDemoServiceImpl.mkdirs();
+			write(new File(sampleDemoServiceImpl, "Default"+capitalShortName+"Service." + language), "sample-service-implementation." + language + ".tmpl", model);
+		}
 
 		// src/test/java
 		File test = new File(new File(dir, "src/test/" + language),
@@ -241,14 +273,30 @@ public class ProjectGenerator {
 
 		// shortName-context.xml
 		write(new File(resources, shortName+"-context.xml"), "spring-context.xml", model);
-//
-//		// shortName-web-context.yml // REMOVED, not supported anymore by 2.0
-//		write(new File(resources, shortName+"-web-context.xml"), "spring-web-context.xml", model);
 
 		// tenants
-		File tenants = new File(resources, "tenants");
+		File tenants = null;
+		if (isEdorasoneVersion20(request)) {
+			tenants = new File(resources, "com/edorasware/config/custom/tenant");
+		} else {
+			tenants = new File(resources, "tenants");
+		}
 		tenants.mkdirs();
 		write(new File(tenants, shortName+".json"), "tenant.json", model);
+
+		if (request.isCreateSampleCode() && isEdorasoneVersion20(request)) {
+
+			// Widget CSS/JS
+			File widgetResouces = new File(resources, "com/edorasware/config/custom/widget");
+			widgetResouces.mkdirs();
+			write(new File(widgetResouces, "edoras-custom-"+request.getShortName()+".css"), "sample-widget.css", model);
+			write(new File(widgetResouces, "edoras-custom-"+request.getShortName()+".js"), "sample-widget.js", model);
+
+			// Palette
+			File paletteResouces = new File(resources, "com/edorasware/config/custom/palette");
+			paletteResouces.mkdirs();
+			write(new File(paletteResouces, "edoras-custom-"+request.getShortName()+".process.palette.xml"), "sample.process.palette.xml", model);
+		}
 
 		// src/test/resources
 		File testResources = new File(dir, "src/test/resources");
@@ -260,9 +308,7 @@ public class ProjectGenerator {
 		// test-shortName-context.xml
 		write(new File(testResources, "test-"+shortName+"-context.xml"), "test-spring-context.xml", model);
 
-		publishProjectGeneratedEvent(request);
-		return rootDir;
-
+		return dir;
 	}
 
 	/**
@@ -445,6 +491,9 @@ public class ProjectGenerator {
 		if (!request.getBoms().isEmpty()) {
 			model.put("hasBoms", true);
 		}
+
+		model.put("capitalShortName", StringUtils.capitalize(request.getShortName()));
+		model.put("packagePath", request.getPackageName().replace(".", "/"));
 
 		return model;
 	}

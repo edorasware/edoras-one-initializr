@@ -102,4 +102,16 @@ public class TemplateRenderer {
 				resourceLoader.getResource(prefix + name).getInputStream(), charset);
 	}
 
+	public static Compiler mustacheCompiler(String templatePath) {
+		return Mustache.compiler().withLoader(mustacheTemplateLoader(templatePath));
+	}
+
+	private static TemplateLoader mustacheTemplateLoader(String templatePath) {
+		ResourceLoader resourceLoader = new DefaultResourceLoader();
+		String prefix = templatePath;
+		Charset charset = Charset.forName("UTF-8");
+		return name -> new InputStreamReader(
+				resourceLoader.getResource(prefix + name).getInputStream(), charset);
+	}
+
 }

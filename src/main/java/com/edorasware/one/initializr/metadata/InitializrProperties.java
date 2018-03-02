@@ -101,7 +101,7 @@ public class InitializrProperties extends InitializrConfiguration {
 	 * Create Sample Code metadata.
 	 */
 	@JsonIgnore
-	private final SimpleElement createSampleCode = new SimpleElement("true");
+	private final SimpleElement createSampleCode = new SimpleElement("false");
 
 	/**
 	 * Description metadata.

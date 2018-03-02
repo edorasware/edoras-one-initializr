@@ -62,9 +62,10 @@ public class AddonGenerator {
 	private ProjectRequestResolver requestResolver;
 
 	@Autowired
-	private TemplateRenderer templateRenderer = new TemplateRenderer();
+	private ProjectGenerator projectGenerator;
 
-	@Autowired
+	private TemplateRenderer addonTemplateRenderer = new TemplateRenderer(TemplateRenderer.mustacheCompiler("classpath:/templates/addon/"));
+
 	private ProjectResourceLocator projectResourceLocator = new ProjectResourceLocator();
 
 	@Value("${TMPDIR:.}/initializr")
@@ -89,8 +90,8 @@ public class AddonGenerator {
 		this.requestResolver = requestResolver;
 	}
 
-	public void setTemplateRenderer(TemplateRenderer templateRenderer) {
-		this.templateRenderer = templateRenderer;
+	public void setAddonTemplateRenderer(TemplateRenderer addonTemplateRenderer) {
+		this.addonTemplateRenderer = addonTemplateRenderer;
 	}
 
 	public void setProjectResourceLocator(ProjectResourceLocator projectResourceLocator) {
@@ -176,6 +177,8 @@ public class AddonGenerator {
 
 		// ==== Addon Module ====
 
+		String capitalShortName = StringUtils.capitalize(request.getShortName());
+
 		File addonDir = new File(parentDir, request.getArtifactId());
 		addonDir.mkdirs();
 
@@ -183,27 +186,36 @@ public class AddonGenerator {
 		writeText(new File(addonDir, "pom.xml"), addonPom);
 
 		// src/main/java
-		File addonSrc = new File(new File(addonDir, "src/main/" + language),
-				request.getPackageName().replace(".", "/"));
+		File javaSrc = new File(addonDir, "src/main/" + language);
+		File addonSrc = new File(javaSrc, request.getPackageName().replace(".", "/"));
 		addonSrc.mkdirs();
 
 		if (request.isCreateSampleCode()) {
 
-			String capitalShortName = StringUtils.capitalize(request.getShortName());
+			// Application Context Configuration
+			File configSrc = new File(javaSrc, "com/edorasware/addons/config");
+			configSrc.mkdirs();
+			write(new File(configSrc, capitalShortName+"AddonConfiguration."+language), "addon-configuration." + language + ".tmpl", model);
 
-			// WebApplicationInitializer
-			write(new File(addonSrc, capitalShortName+"WebApplicationInitializer." + language), "addon-WebApplicationInitializer." + language + ".tmpl", model);
+			// Rest Context Configuration
+			File restConfigSrc = new File(javaSrc, "com/edorasware/addons/rest");
+			restConfigSrc.mkdirs();
+			write(new File(restConfigSrc, capitalShortName+"AddonRestConfiguration."+language), "addon-rest-configuration." + language + ".tmpl", model);
 
 			// Controller
 			File addonDemoController = new File(addonSrc, "controller");
 			addonDemoController.mkdirs();
-			write(new File(addonDemoController, capitalShortName+"Controller." + language), "addon-controller." + language + ".tmpl", model);
+			write(new File(addonDemoController, capitalShortName+"AddonController." + language), "addon-controller." + language + ".tmpl", model);
 
-			// Service
+			// Service Interface
 			File addonDemoService = new File(addonSrc, "service");
 			addonDemoService.mkdirs();
-			write(new File(addonDemoService, capitalShortName+"Service." + language), "addon-service-interface." + language + ".tmpl", model);
-			write(new File(addonDemoService, "Default"+capitalShortName+"Service." + language), "addon-service-implementation." + language + ".tmpl", model);
+			write(new File(addonDemoService, capitalShortName+"AddonService." + language), "addon-service-interface." + language + ".tmpl", model);
+
+			// Service Implementation
+			File addonDemoServiceImpl = new File(addonDemoService, "impl");
+			addonDemoServiceImpl.mkdirs();
+			write(new File(addonDemoServiceImpl, "Default"+capitalShortName+"AddonService." + language), "addon-service-implementation." + language + ".tmpl", model);
 		}
 
 		// src/test/java
@@ -216,10 +228,17 @@ public class AddonGenerator {
 		addonResources.mkdirs();
 
 		if (request.isCreateSampleCode()) {
-			File addonResourcesPackage = new File(addonResources, request.getPackageName().replace(".", "/"));
-			addonResourcesPackage.mkdirs();
 
-			write(new File(addonResourcesPackage, "edoras-addon-"+request.getShortName()+"-context.xml"), "addon-spring-context.xml", model);
+			// Widget CSS/JS
+			File widgetResouces = new File(addonResources, "com/edorasware/addons/widget");
+			widgetResouces.mkdirs();
+			write(new File(widgetResouces, "edoras-addon-"+request.getShortName()+".css"), "addon-widget.css", model);
+			write(new File(widgetResouces, "edoras-addon-"+request.getShortName()+".js"), "addon-widget.js", model);
+
+			// Palette
+			File paletteResouces = new File(addonResources, "com/edorasware/addons/palette");
+			paletteResouces.mkdirs();
+			write(new File(paletteResouces, "edoras-addon-"+request.getShortName()+".process.palette.xml"), "addon.process.palette.xml", model);
 		}
 
 		// src/test/resources
@@ -241,73 +260,15 @@ public class AddonGenerator {
 		// README.md
 		write(new File(addonFrontendDir, "README.md"), "addon-frontend-README.tmpl", model);
 
-
 		// ==== Addon Demo Module ====
 
 		File addonDemoDir = new File(parentDir, request.getArtifactId()+"-demo");
 		addonDemoDir.mkdirs();
+		request.setPackageName("com.example."+request.getShortName());
+		projectGenerator.doGenerateProjectStructure(request, addonDemoDir);
 
 		String addonTestPom = new String(doGenerateAddonStarterModulePom(model));
 		writeText(new File(addonDemoDir, "pom.xml"), addonTestPom);
-
-		// src/main/java
-		File addonDemoSrc = new File(new File(addonDemoDir, "src/main/" + language),
-				request.getPackageName().replace(".", "/"));
-		addonDemoSrc.mkdirs();
-
-		// src/test/java
-		File addonDemoTest = new File(new File(addonDemoDir, "src/test/" + language),
-				request.getPackageName().replace(".", "/"));
-		addonDemoTest.mkdirs();
-
-		if (request.isCreateSampleCode()) {
-//			setupTestModel(request, model);
-			if (isEdorasoneVersion10(request)) {
-				write(new File(addonDemoTest, "SampleComponentTest." + language), "SampleComponentTest16." + language + ".tmpl", model);
-			}
-			if (isEdorasoneVersion20(request)) {
-				write(new File(addonDemoTest, "SampleComponentTest." + language), "SampleComponentTest20." + language + ".tmpl", model);
-			}
-		}
-
-		// src/main/resources
-		File addonStarterResources = new File(addonDemoDir, "src/main/resources");
-		addonStarterResources.mkdirs();
-
-		String shortName = request.getShortName();
-
-		// application.yml
-		write(new File(addonStarterResources, "application.yml"), "application.yml", model);
-
-		// shortName.yml
-		write(new File(addonStarterResources, shortName+".yml"), "config.yml", model);
-
-		// shortName-dev.yml
-		write(new File(addonStarterResources, shortName+"-dev.yml"), "config-dev.yml", model);
-
-		// shortName-context.xml
-		write(new File(addonStarterResources, shortName+"-context.xml"), "spring-context.xml", model);
-
-		// shortName-web-context.yml
-		write(new File(addonStarterResources, shortName+"-web-context.xml"), "spring-web-context.xml", model);
-
-		// logback.xml
-		write(new File(addonStarterResources, "application-logback.xml"), "application-logback.xml", model);
-
-		// tenants
-		File tenants = new File(addonStarterResources, "tenants");
-		tenants.mkdirs();
-		write(new File(tenants, shortName+".json"), "tenant.json", model);
-
-		// src/test/resources
-		File addonStarterTestResources = new File(addonDemoDir, "src/test/resources");
-		addonStarterTestResources.mkdirs();
-
-		// test-shortName.yml
-		write(new File(addonStarterTestResources, "test-"+shortName+".yml"), "test-config.yml", model);
-
-		// test-shortName-context.xml
-		write(new File(addonStarterTestResources, "test-"+shortName+"-context.xml"), "test-spring-context.xml", model);
 
 		publishAddonGeneratedEvent(request);
 		return parentDir;
@@ -374,7 +335,7 @@ public class AddonGenerator {
 		else {
 			model.put("build", "gradle");
 		}
-		write(new File(dir, ".gitignore"), "gitignore.tmpl", model);
+		write(new File(dir, ".gitignore"), "addon-gitignore.tmpl", model);
 	}
 
 	/**
@@ -461,6 +422,9 @@ public class AddonGenerator {
 		Map<String, String> maven = new LinkedHashMap<>();
 		model.put("buildPropertiesMaven", maven.entrySet());
 		request.getBuildProperties().getMaven().forEach((k, v) -> maven.put(k, v.get()));
+
+		// edoras one version
+		model.put("edorasOneVersionWithoutStarter", request.getEdorasoneVersion().split("-")[0]);
 
 		// Add various versions
 		model.put("dependencyManagementPluginVersion", metadata.getConfiguration()
@@ -588,23 +552,23 @@ public class AddonGenerator {
 	}
 
 	private byte[] doGenerateAddonParentPom(Map<String, Object> model) {
-		return templateRenderer.process("addon-parent-pom.xml", model).getBytes();
+		return addonTemplateRenderer.process("addon-parent-pom.xml", model).getBytes();
 	}
 
 	private byte[] doGenerateAddonModulePom(Map<String, Object> model) {
-		return templateRenderer.process("addon-module-pom.xml", model).getBytes();
+		return addonTemplateRenderer.process("addon-module-pom.xml", model).getBytes();
 	}
 
 	private byte[] doGenerateAddonFrontendModulePom(Map<String, Object> model) {
-		return templateRenderer.process("addon-frontend-module-pom.xml", model).getBytes();
+		return addonTemplateRenderer.process("addon-frontend-module-pom.xml", model).getBytes();
 	}
 
 	private byte[] doGenerateAddonStarterModulePom(Map<String, Object> model) {
-		return templateRenderer.process("addon-starter-module-pom.xml", model).getBytes();
+		return addonTemplateRenderer.process("addon-starter-module-pom.xml", model).getBytes();
 	}
 
 	private byte[] doGenerateGradleBuild(Map<String, Object> model) {
-		return templateRenderer.process("starter-build.gradle", model).getBytes();
+		return addonTemplateRenderer.process("starter-build.gradle", model).getBytes();
 	}
 
 	private File writeBinaryResource(File dir, String name, String location) {
@@ -641,7 +605,7 @@ public class AddonGenerator {
 	}
 
 	public void write(File target, String templateName, Map<String, Object> model) {
-		String body = templateRenderer.process(templateName, model);
+		String body = addonTemplateRenderer.process(templateName, model);
 		writeText(target, body);
 	}
 

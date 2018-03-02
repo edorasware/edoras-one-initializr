@@ -1,7 +1,6 @@
 package {{packageName}}.service;
 
-import com.edorasware.commons.core.entity.GlobalId;
-import com.edorasware.commons.core.entity.WorkObject;
+import com.edorasware.api.workobject.WorkObject;
 
 public interface {{capitalShortName}}Service {
 
@@ -10,5 +9,5 @@ public interface {{capitalShortName}}Service {
      * @param globalId the work object globalId
      * @return work object
      */
-    WorkObject<?,?,?> logButtonClick(GlobalId globalId);
+    WorkObject logButtonClick(String globalId);
 }
