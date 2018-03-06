@@ -1,0 +1,7 @@
+---
+applications:
+- name: edoras-one-initializr-test
+  memory: 1G
+  instances: 1
+  path: target/edoras-one-initializr-1.0.0-SNAPSHOT.war
+  buildpack: java_buildpack

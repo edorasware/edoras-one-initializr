@@ -21,6 +21,8 @@ Todo:
 - Support for Groovy / Kotlin
 - Externalize Templates and load them from GitHub
 
+A test server with the latest head version can be found on https://edoras-one-initializr-test.cfapps.io (potentially unstable)
+
 ## Running form Command Line
 
 Its also possible to run the initializr from a command line using the curl command e.g. like this:
@@ -38,6 +40,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 - Added sample code for addon projects
 - Moved sample code generation checkbox to light view, unchecked by default now
 - Updated travis build to support stages and deploy only on tags
+- Setup test server with latest head version on https://edoras-one-initializr-test.cfapps.io
 
 ### 02-12-2018
 - Update version to starter 2.0.3-1
