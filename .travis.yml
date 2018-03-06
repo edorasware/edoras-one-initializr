@@ -1,19 +1,24 @@
 language: java
 jdk:
 - oraclejdk8
-script: mvn package
-branches:
-  only:
-  - master
-deploy:
-  provider: cloudfoundry
-  api: https://api.run.pivotal.io
-  username: roger.villars@edorasware.com
-  password:
-    secure: U3uN33ZrbSKVo4V3VhDvoOGfzd8a3ifE2grBKEzgCWHPjcqppVhOIm1ESAGrTBk5vvOuj2F+DJ3bVjhD/vh2PBBkX5DCIo0Dw5DQQXP9PRCFa2SWidGNFeeqCDmIunwBevsvpm8FTOZFuw2GEbCdsp+ADHz1Y2vpJH8bzPZ90hXA7qeclCCuJlQvqTM7eV9hXPHTTLUmQExGbkmj8yjtMMWLBe0A9LM5LQCFY6Ig/aUGHQxbXLPBF/2BXCIQlm1wQ/3Jv4RBW8T4k8Z6x4VPuFQWvBZujb2ZrTWoHc/grNwqARMK1kjOFoehORL42807dVcmnw7kAQIgQi+u+CaFWMUhpPvz7j+waA6G4y1w3kcwImlFHQ0ny5gh7OzBjk+2yZoiXBNoHn5vPYHDah0M0C3xFdB10LhDpQOC1i5u5ArO9nfXmZPpeqV7qMdRqmZ0XpKrzBUsuGup7BMRHIh/7mSnaDoUOxOL7EMqs6SkxEXMYgkaE5jQGE+GYu3fafAj4hj0n89C4YUWegw/C6oZeA4QiCda1puN//I9vMaQVgvyiyAXhrVpwIgaZVUURgoiSzBVLjoy1NoCysD0ckFWx9iRWQiIKXkY71FBjiTV9rF1nClYGbTf9g5YQFzv2myxoihts1+fpY6Bk0mv9Q37bLn/wICqVHEobpBu4tqyHPE=
-  organization: flowable
-  space: production
-  manifest: cloudfoundry.yml
-  on:
-    repo: edorasware/edoras-one-initializr
-    branch: master
+jobs:
+  include:
+    - stage: test
+      script: mvn package
+      branches:
+        only:
+          - master
+    - stage: deploy
+      script: skip
+      deploy:
+        provider: cloudfoundry
+        api: https://api.run.pivotal.io
+        username: roger.villars@edorasware.com
+        password:
+          secure: U3uN33ZrbSKVo4V3VhDvoOGfzd8a3ifE2grBKEzgCWHPjcqppVhOIm1ESAGrTBk5vvOuj2F+DJ3bVjhD/vh2PBBkX5DCIo0Dw5DQQXP9PRCFa2SWidGNFeeqCDmIunwBevsvpm8FTOZFuw2GEbCdsp+ADHz1Y2vpJH8bzPZ90hXA7qeclCCuJlQvqTM7eV9hXPHTTLUmQExGbkmj8yjtMMWLBe0A9LM5LQCFY6Ig/aUGHQxbXLPBF/2BXCIQlm1wQ/3Jv4RBW8T4k8Z6x4VPuFQWvBZujb2ZrTWoHc/grNwqARMK1kjOFoehORL42807dVcmnw7kAQIgQi+u+CaFWMUhpPvz7j+waA6G4y1w3kcwImlFHQ0ny5gh7OzBjk+2yZoiXBNoHn5vPYHDah0M0C3xFdB10LhDpQOC1i5u5ArO9nfXmZPpeqV7qMdRqmZ0XpKrzBUsuGup7BMRHIh/7mSnaDoUOxOL7EMqs6SkxEXMYgkaE5jQGE+GYu3fafAj4hj0n89C4YUWegw/C6oZeA4QiCda1puN//I9vMaQVgvyiyAXhrVpwIgaZVUURgoiSzBVLjoy1NoCysD0ckFWx9iRWQiIKXkY71FBjiTV9rF1nClYGbTf9g5YQFzv2myxoihts1+fpY6Bk0mv9Q37bLn/wICqVHEobpBu4tqyHPE=
+        organization: flowable
+        space: production
+        manifest: cloudfoundry.yml
+        on:
+          repo: edorasware/edoras-one-initializr
+          tags: true

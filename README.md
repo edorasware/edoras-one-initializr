@@ -12,17 +12,14 @@ Already working:
 - Support for additional "Short Name" property (used for config files, tenant, etc.)
 - Gradle .war and .executable .jar project generation (needs gradle 3.0+)
 - Maven .war and .executable .jar project generation
-- First very unstable draft of addon support.
+- Support for creating addons.
 - Support for different Java versions.
 
 Todo:
-- Improve addon dependency support
-- Config generation for addons
 - Metadata from Repository/Addon Marketplace
 - Code cleanup
 - Fixing a lot of bugs
 - Support for Groovy / Kotlin
-- Refactor the UI to use AngularJS/Webpack
 - Externalize Templates and load them from GitHub
 
 ## Running form Command Line
@@ -35,12 +32,13 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
-### TODO
+### UNRELEASED
 - Update version to starter 2.0.4-SNAPSHOT
 - Added possibility to create addon projects for edoras one 2.0
 - Added sample code for projects
 - Added sample code for addon projects
 - Moved sample code generation checkbox to light view, unchecked by default now
+- Updated travis build to support stages and deploy only on tags
 
 ### 02-12-2018
 - Update version to starter 2.0.3-1
