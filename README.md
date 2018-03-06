@@ -35,7 +35,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 ### UNRELEASED
 - Update version to starter 2.0.4-SNAPSHOT
 - Added possibility to create addon projects for edoras one 2.0
-- Added sample code for projects
+- Added sample code for projects (see https://github.com/edorasware/edoras-one-initializr/issues/2)
 - Added sample code for addon projects
 - Moved sample code generation checkbox to light view, unchecked by default now
 - Updated travis build to support stages and deploy only on tags
