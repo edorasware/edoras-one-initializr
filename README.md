@@ -2,8 +2,6 @@
 
 See https://edoras-one-initializr.cfapps.io
 
-Still in early alpha state. 
-
 Using the generated code needs an edoras one license (see http://www.edorasware.com) and access to the appropriate repositories. Don't even try to get it running without.
 
 Already working:
@@ -12,6 +10,7 @@ Already working:
 - Support for additional "Short Name" property (used for config files, tenant, etc.)
 - Gradle .war and .executable .jar project generation (needs gradle 3.0+)
 - Maven .war and .executable .jar project generation
+- Create sample code for addons and project if requested
 - Support for creating addons.
 - Support for different Java versions.
 
