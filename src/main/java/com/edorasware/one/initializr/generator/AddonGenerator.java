@@ -47,6 +47,7 @@ import java.util.stream.Collectors;
  * @author Stephane Nicoll
  * @author Sebastien Deleuze
  * @author Andy Wilkinson
+ * @author Roger Villars
  */
 public class AddonGenerator {
 
