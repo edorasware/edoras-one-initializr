@@ -209,6 +209,23 @@
                 "version": "2.0.3"
               }
             ]
+          },
+          {
+            "name": "Batch",
+            "id": "edoras-addon-batch",
+            "description": "Provides a batch job infrastructure based on Spring Batch",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-batch",
+            "mappings": [
+              {
+                "versionRange": "[1.6.0,1.6.999]",
+                "version": "1.1.0"
+              },
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.3-1"
+              }
+            ]
           }
         ]
       },
@@ -379,16 +396,50 @@
               }
             ],
             "versionRange": "[1.9.999,2.0.999]"
+          },
+          {
+            "name": "elasticsearch local (ESLocal)",
+            "id": "edoras-addon-eslocal",
+            "description": "Automatically installs and starts a local elasticsearch instance",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-eslocal",
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "5.6.3"
+              }
+            ],
+            "versionRange": "[1.9.999,2.0.999]"
           }
         ]
       },
       {
-        "name": "Data",
+        "name": "Content",
         "content": [
           {
-            "name": "Master Data Management",
+            "name": "Enterprise Content Management (ECM)",
+            "id": "edoras-addon-ecm",
+            "description": "Management of Documents and Content like PDFs, Word, Mails, etc.",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-ecm",
+            "transients": [
+              "edoras-addon-batch"
+            ],
+            "mappings": [
+              {
+                "versionRange": "[1.6.0,1.6.999]",
+                "version": "1.1.10"
+              },
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.3"
+              }
+            ]
+          },
+          {
+            "name": "Master Data Management (MDM)",
             "id": "edoras-addon-data-mdm",
-            "description": "Able to handle different sources of master data",
+            "description": "Able to integrate different sources of master data",
             "groupId": "com.edorasware.addons",
             "artifactId": "edoras-addon-data-mdm",
             "transients": [
@@ -406,7 +457,7 @@
             ]
           },
           {
-            "name": "External System Integration",
+            "name": "External System Integration (ESI)",
             "id": "edoras-addon-data-esi",
             "description": "Able to easily define and handle external system functions",
             "groupId": "com.edorasware.addons",

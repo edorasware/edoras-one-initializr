@@ -41,6 +41,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 - Moved sample code generation checkbox to light view, unchecked by default now
 - Updated travis build to support stages and deploy only on tags
 - Setup test server with latest head version on https://edoras-one-initializr-test.cfapps.io
+- Added new addon dependencies (ECM, Batch, ESLocal)
 
 ### 02-12-2018
 - Update version to starter 2.0.3-1
