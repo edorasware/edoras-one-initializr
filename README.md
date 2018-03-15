@@ -33,8 +33,8 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
-### UNRELEASED
-- Update version to starter 2.0.4-SNAPSHOT
+### unreleased
+- Update version to starter 2.0.4 (also most addons)
 - Added possibility to create addon projects for edoras one 2.0
 - Added sample code for projects (see https://github.com/edorasware/edoras-one-initializr/issues/2)
 - Added sample code for addon projects
@@ -42,6 +42,8 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 - Updated travis build to support stages and deploy only on tags
 - Setup test server with latest head version on https://edoras-one-initializr-test.cfapps.io
 - Added new addon dependencies (ECM, Batch, ESLocal)
+- Removed google analytics code
+- Minor Bugfixes
 
 ### 02-12-2018
 - Update version to starter 2.0.3-1

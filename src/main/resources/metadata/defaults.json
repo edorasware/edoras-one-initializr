@@ -133,7 +133,7 @@
     "content": [
       {
         "name": "2.0.4",
-        "id": "2.0.4-SNAPSHOT",
+        "id": "2.0.4",
         "default": true
       },
       {
@@ -193,7 +193,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3"
+                "version": "2.0.4"
               }
             ]
           },
@@ -206,7 +206,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3"
+                "version": "2.0.4"
               }
             ]
           },
@@ -364,7 +364,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3"
+                "version": "2.0.4"
               }
             ],
             "versionRange": "[1.9.999,2.0.999]"
@@ -392,7 +392,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3"
+                "version": "2.0.4"
               }
             ],
             "versionRange": "[1.9.999,2.0.999]"
@@ -452,7 +452,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3"
+                "version": "2.0.4-1"
               }
             ]
           },
@@ -472,7 +472,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3"
+                "version": "2.0.4-1"
               }
             ]
           },
@@ -485,7 +485,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3"
+                "version": "2.0.4"
               }
             ],
             "versionRange": "[1.9.999,2.0.999]"
@@ -504,7 +504,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3"
+                "version": "2.0.4"
               }
             ]
           }

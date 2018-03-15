@@ -156,6 +156,12 @@ $(function () {
             $('#edorasoneVersion').val($("#edorasoneVersion option:first").val());
             $("#edorasoneVersion").attr('disabled', true);
             $("#autocomplete").attr('disabled', true);
+        } else if ($("#type").val() == 'maven-project') {
+            $("#groupId").attr('value', "com.example");
+            $("#artifactId").attr('value', $("#shortName").val());
+            $('#edorasoneVersion').val($("#edorasoneVersion option:first").val());
+            $("#edorasoneVersion").attr('disabled', false);
+            $("#autocomplete").attr('disabled', false);
         } else {
             $("#edorasoneVersion").attr('disabled', false);
             $("#autocomplete").attr('disabled', false);
