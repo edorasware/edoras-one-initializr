@@ -133,7 +133,7 @@
     "content": [
       {
         "name": "2.0.4",
-        "id": "2.0.4",
+        "id": "2.0.4-1",
         "default": true
       },
       {
@@ -206,7 +206,20 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.4"
+                "version": "2.0.4-1"
+              }
+            ]
+          },
+          {
+            "name": "License Meter",
+            "id": "edoras-addon-license-meter",
+            "description": "Stores Login Events in an elasticsearch index and allows to calculate the amount of license relevant logins",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-license-meter",
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.4-1"
               }
             ]
           },
