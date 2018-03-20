@@ -159,6 +159,19 @@
 	</dependencyManagement>
 {{/hasBoms}}
 
+	<dependencyManagement>
+		<dependencies>
+			<!-- Imports the bill-of-materials POM. -->
+			<dependency>
+				<groupId>com.edorasware.one</groupId>
+				<artifactId>edoras-one-starter-bom</artifactId>
+				<version>${com.edorasware.one.starter.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		{{#kotlin}}
 		<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>

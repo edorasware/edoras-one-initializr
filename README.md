@@ -43,6 +43,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 - Setup test server with latest head version on https://edoras-one-initializr-test.cfapps.io
 - Added new addon dependencies (ECM, Batch, ESLocal)
 - Removed google analytics code
+- Added dependency management bom to project pom
 - Minor Bugfixes
 
 ### 02-12-2018
