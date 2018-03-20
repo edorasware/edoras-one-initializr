@@ -377,7 +377,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.4"
+                "version": "2.0.4-1"
               }
             ],
             "versionRange": "[1.9.999,2.0.999]"
