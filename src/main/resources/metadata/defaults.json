@@ -340,6 +340,23 @@
               }
             ],
             "versionRange": "[1.9.999,2.0.999]"
+          },
+          {
+            "name": "Statistics and Analysis of Work Objects",
+            "id": "edoras-addons-analytics",
+            "description": "Provides analytics, statistics, graphs, and evaluations of edoras one work object measures",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addons-analytics",
+            "transients": [
+              "edoras-addon-commons"
+            ],
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "1.5.43"
+              }
+            ],
+            "versionRange": "[1.9.999,2.0.999]"
           }
         ]
       },
@@ -445,7 +462,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3-1"
+                "version": "2.0.4"
               }
             ]
           },
