@@ -132,8 +132,8 @@
     "description": null,
     "content": [
       {
-        "name": "2.0.4",
-        "id": "2.0.4-1",
+        "name": "2.0.5-SNAPSHOT",
+        "id": "2.0.5-SNAPSHOT",
         "default": true
       },
       {

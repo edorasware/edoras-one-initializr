@@ -33,6 +33,9 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
+### unreleased
+- Update version to starter 2.0.5-SNAPSHOT
+
 ### 02-23-2018
 - Update version to starter 2.0.4 (also most addons)
 - Added possibility to create addon projects for edoras one 2.0
