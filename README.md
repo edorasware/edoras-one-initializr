@@ -35,6 +35,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ### unreleased
 - Update version to starter 2.0.5-SNAPSHOT
+- Changed theme and styling from edoras one to flowable
 
 ### 02-23-2018
 - Update version to starter 2.0.4 (also most addons)
