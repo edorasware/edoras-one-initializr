@@ -12,26 +12,14 @@ body, h1, h2, h3 {
 
 .start-header {
     color: #eee;
-    background-color: #1f3245;
+    background-color: #34302d;
     font-size: 25px;
     padding: 0.5em 0;
-    border-top: 4px solid #e74c3c;
+    border-top: 4px solid #c70d30;
 }
 
 .start-header h1 {
     /*text-transform: uppercase;*/
-}
-
-.start-header a {
-    background-repeat: no-repeat;
-    background-image: url(../img/flw-logo-dark.svg);
-    background-position: 0px 12px;
-    background-size: auto 34px;
-    -moz-background-size: auto 20px;
-    height: 20px;
-    outline: none;
-    padding: 10px 10px 10px 203px;
-    width: 118px;
 }
 
 .start-header small {
@@ -72,7 +60,7 @@ input[type=text] {
 }
 
 .tag {
-    background-color: #e74c3c;
+    background-color: #c70d30;
     color: #fff;
     font-weight: 700;
     border-radius: .25em;
@@ -179,7 +167,7 @@ footer {
     bottom: 0;
     width: 100%;
     height: 60px;
-    background-color: #1f3245;
+    background-color: #5d5d5d;
     color: #eee;
     padding: 20px 0;
 }
