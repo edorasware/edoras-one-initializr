@@ -34,6 +34,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 ## Change Log
 
 ### unreleased
+- Changed theme and styling from edoras one to flowable
 - Update version to starter 2.0.5-SNAPSHOT
 
 ### 02-23-2018
