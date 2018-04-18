@@ -9,8 +9,8 @@
     <group id="custom-tasks" title="Custom Tasks">
         <component id="edoras-custom-{{shortName}}-sample-component" title="Custom Service Task" extends="ServiceTask" attribute-groups="baseAttributes,usertaskAttributes,activitiMultiInstanceAttributes">
             <attribute id="name" value="Custom Service Task" optional="false"/>
-            <attribute id="workobjectGlobalId" type="SimpleText" title="WorkObject GlobalId" export="true" optional="false" visible="true" category="edoras" value=""/>
-            <attribute id="expression" value="#{default{{capitalShortName}}Service.logButtonClick([[workobjectGlobalId]])}" visible="false" export="true" constant="true"/>
+            <attribute id="globalId" type="SimpleText" title="Work Object Global Id" export="true" optional="false" visible="true" category="edoras" value=""/>
+            <attribute id="expression" value="{{=<% %>=}}#{<%shortName%>Expression.logButtonClick([[globalId]])}<%={{ }}=%>" visible="false" export="true" constant="true"/>
             <attribute id="delegateExpression" visible="false"/>
             <attribute id="class" visible="false"/>
         </component>

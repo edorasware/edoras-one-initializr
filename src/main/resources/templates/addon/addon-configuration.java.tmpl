@@ -4,6 +4,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("{{packageName}}.service.impl")
+@ComponentScan({"{{packageName}}.service.impl", "{{packageName}}.expression"})
 public class {{capitalShortName}}AddonConfiguration {
 }
