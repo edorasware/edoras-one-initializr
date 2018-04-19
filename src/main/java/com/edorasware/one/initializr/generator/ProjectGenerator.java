@@ -237,6 +237,11 @@ public class ProjectGenerator {
 			File sampleDemoServiceImpl = new File(sampleDemoService, "impl");
 			sampleDemoServiceImpl.mkdirs();
 			write(new File(sampleDemoServiceImpl, "Default"+capitalShortName+"Service." + language), "sample-service-implementation." + language + ".tmpl", model);
+
+			// Expression Service
+			File sampleDemoExpressionService = new File(packageSrc, "expression");
+			sampleDemoExpressionService.mkdirs();
+			write(new File(sampleDemoExpressionService, capitalShortName+"Expression." + language), "sample-expression-service." + language + ".tmpl", model);
 		}
 
 		// src/test/java

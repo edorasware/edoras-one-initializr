@@ -9,8 +9,8 @@
     <group id="addon-tasks" title="Addon Tasks">
         <component id="edoras-addon-{{shortName}}-sample-component" title="Addon Service Task" extends="ServiceTask" attribute-groups="baseAttributes,usertaskAttributes,activitiMultiInstanceAttributes">
             <attribute id="name" value="Addon Service Task" optional="false"/>
-            <attribute id="workobjectGlobalId" type="SimpleText" title="WorkObject GlobalId" export="true" optional="false" visible="true" category="edoras" value=""/>
-            <attribute id="expression" value="#{default{{capitalShortName}}AddonService.logButtonClick([[workobjectGlobalId]])}" visible="false" export="true" constant="true"/>
+            <attribute id="globalId" type="SimpleText" title="Work Object Global Id" export="true" optional="false" visible="true" category="edoras" value=""/>
+            <attribute id="expression" value="{{=<% %>=}}#{<%shortName%>AddonExpression.logButtonClick([[globalId]])}<%={{ }}=%>" visible="false" export="true" constant="true"/>
             <attribute id="delegateExpression" visible="false"/>
             <attribute id="class" visible="false"/>
         </component>

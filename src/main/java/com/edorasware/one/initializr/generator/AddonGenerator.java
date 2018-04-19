@@ -217,6 +217,11 @@ public class AddonGenerator {
 			File addonDemoServiceImpl = new File(addonDemoService, "impl");
 			addonDemoServiceImpl.mkdirs();
 			write(new File(addonDemoServiceImpl, "Default"+capitalShortName+"AddonService." + language), "addon-service-implementation." + language + ".tmpl", model);
+
+			// Expression Service
+			File addonDemoExpressionService = new File(addonSrc, "expression");
+			addonDemoExpressionService.mkdirs();
+			write(new File(addonDemoExpressionService, capitalShortName+"AddonExpression." + language), "addon-expression-service." + language + ".tmpl", model);
 		}
 
 		// src/test/java

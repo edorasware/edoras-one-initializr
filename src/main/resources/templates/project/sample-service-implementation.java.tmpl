@@ -1,7 +1,6 @@
 package {{packageName}}.service.impl;
 
 import {{packageName}}.service.{{capitalShortName}}Service;
-import com.edorasware.api.expression.ExpressionBean;
 import com.edorasware.api.workobject.WorkObject;
 import com.edorasware.api.workobject.WorkObjectService;
 import org.slf4j.Logger;
@@ -15,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
  */
 @Service
 @Transactional
-@ExpressionBean
 public class Default{{capitalShortName}}Service implements {{capitalShortName}}Service {
 
     private static final Logger LOG = LoggerFactory.getLogger(Default{{capitalShortName}}Service.class);
@@ -29,7 +27,8 @@ public class Default{{capitalShortName}}Service implements {{capitalShortName}}S
 
     @Override
     public WorkObject logButtonClick(String globalId) {
-        WorkObject workObject = workObjectService.getWorkObject(globalId);
+        String workObjectId = workObjectService.getWorkObjectId(globalId);
+        WorkObject workObject = workObjectService.getWorkObject(workObjectId);
         LOG.info("Button clicked on workObject with ID: "+workObject.getId()+" and name: "+workObject.getName());
         return workObject;
     }
