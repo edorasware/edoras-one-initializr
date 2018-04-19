@@ -35,6 +35,8 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ### unreleased
 - Update version to starter 2.0.5-SNAPSHOT
+- Added separate ExpressionService class to sample code
+- Fixed issue in sample code when searching for work object by id. 
 
 ### 02-23-2018
 - Update version to starter 2.0.4 (also most addons)
