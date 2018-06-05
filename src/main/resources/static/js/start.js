@@ -143,10 +143,12 @@ $(function () {
         });
     };
     var addTransients = function(transients) {
-        for (var i = 0; i < transients.length; i++) {
-            var transient = transients[i];
-            addTag(transient.id, transient.name);
-            $("#dependencies input[value='" + transient.id + "']").prop('checked', true);
+        if (transients != null) {
+            for (var i = 0; i < transients.length; i++) {
+                var transient = transients[i];
+                addTag(transient.id, transient.name);
+                $("#dependencies input[value='" + transient.id + "']").prop('checked', true);
+            }
         }
     };
     var updateIfAddon = function () {

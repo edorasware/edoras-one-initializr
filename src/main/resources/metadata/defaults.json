@@ -132,8 +132,8 @@
     "description": null,
     "content": [
       {
-        "name": "2.0.5-SNAPSHOT",
-        "id": "2.0.5-SNAPSHOT",
+        "name": "2.0.4",
+        "id": "2.0.4-2",
         "default": true
       },
       {
@@ -206,7 +206,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.4-1"
+                "version": "2.0.4-2"
               }
             ]
           },
@@ -219,7 +219,7 @@
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.4-1"
+                "version": "2.0.4-4"
               }
             ]
           },
@@ -236,7 +236,20 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.3-1"
+                "version": "2.0.4"
+              }
+            ]
+          },
+          {
+            "name": "OpenId Connect",
+            "id": "edoras-addon-openidc",
+            "description": "Provides a simple connector for authentication with OpenId Connect.",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-openidc",
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.3"
               }
             ]
           }
@@ -482,7 +495,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.4-1"
+                "version": "2.0.4-2"
               }
             ]
           },
@@ -502,7 +515,7 @@
               },
               {
                 "versionRange": "[1.9.999,2.0.999]",
-                "version": "2.0.4-1"
+                "version": "2.0.4-2"
               }
             ]
           },
@@ -531,6 +544,91 @@
             "description": "Addon that provides documentation for the edoras one REST APIs (e.g. Swagger)",
             "groupId": "com.edorasware.addons",
             "artifactId": "edoras-addon-rest-doc",
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Widgets",
+        "content": [
+          {
+            "name": "CSV Export Button",
+            "id": "edoras-addon-csv-export-button",
+            "description": "This wisget can be used to export list data into a CSV file",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-csv-export-button",
+            "transients": [
+              "edoras-addon-widget-resource"
+            ],
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.4"
+              }
+            ]
+          },
+          {
+            "name": "Grid",
+            "id": "edoras-addon-grid",
+            "description": "Turn information into a sophisticated data grid with great features like sorting, filtering or selecting without any effort and offer your users a nice experience.",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-grid",
+            "transients": [
+              "edoras-addon-widget-resource"
+            ],
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.4-2"
+              }
+            ]
+          },
+          {
+            "name": "Grid Lite",
+            "id": "edoras-addon-grid-lite",
+            "description": "The edoras Grid Lite widget turns information into a sophisticated and customizable data grid and offer your users a nice experience.",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-grid-lite",
+            "transients": [
+              "edoras-addon-widget-resource"
+            ],
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.4-1"
+              }
+            ]
+          },
+          {
+            "name": "Action Button",
+            "id": "edoras-addon-action-button",
+            "description": "Configurable button that can perform differently the actions provided by the Edoras API. Supported actions are: assign, create, complete, discard, save, and cmmn actions.",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-action-button",
+            "transients": [
+              "edoras-addon-widget-resource"
+            ],
+            "mappings": [
+              {
+                "versionRange": "[1.9.999,2.0.999]",
+                "version": "2.0.4-2"
+              }
+            ]
+          },
+          {
+            "name": "Lookup Modal",
+            "id": "edoras-addon-lookup-modal",
+            "description": "Button with value and Query URL which opens a modal with a text field to search. On select an item of the result list, the selected item is bound to the value and closes the modal.",
+            "groupId": "com.edorasware.addons",
+            "artifactId": "edoras-addon-lookup-modal",
+            "transients": [
+              "edoras-addon-widget-resource"
+            ],
             "mappings": [
               {
                 "versionRange": "[1.9.999,2.0.999]",

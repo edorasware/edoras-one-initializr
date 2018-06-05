@@ -34,10 +34,13 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 ## Change Log
 
 ### unreleased
-- Update version to starter 2.0.5-SNAPSHOT
+- Updated version to starter 2.0.4-2
+- Updated a lot of addons to their latest version
+- Added a lot of new addons (maily widgets, grid, grid lite, etc.)
+- fixed bug where addons with no transients could not be added (e.g. REST API Doc)
 - Added separate ExpressionService class to sample code
 - Fixed issue in sample code when searching for work object by id.
-- Updated analytics addon version and corrected typo in artifact name. 
+- Updated analytics addon version and corrected typo in artifact name
 
 ### 02-23-2018
 - Update version to starter 2.0.4 (also most addons)
