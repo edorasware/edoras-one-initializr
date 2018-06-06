@@ -33,7 +33,7 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 
 ## Change Log
 
-### unreleased
+### 06-06-2018
 - Updated version to starter 2.0.4-2
 - Updated a lot of addons to their latest version
 - Added a lot of new addons (maily widgets, grid, grid lite, etc.)
