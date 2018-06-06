@@ -28,7 +28,7 @@ A test server with the latest head version can be found on https://edoras-one-in
 Its also possible to run the initializr from a command line using the curl command e.g. like this:
 
 ```bash
-curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d groupId=com.edorasware.app -d shortName=myApp | tar -zvx
+curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d groupId=com.edorasware.app -d shortName=myApp -d dependencies=edoras-addon-rest-doc,edoras-addon-data-esi | tar -zvx
 ```
 
 ## Change Log
@@ -37,10 +37,11 @@ curl http://edoras-one-initializr.cfapps.io/starter.tgz -d artifactId=my-app -d 
 - Updated version to starter 2.0.4-2
 - Updated a lot of addons to their latest version
 - Added a lot of new addons (maily widgets, grid, grid lite, etc.)
-- fixed bug where addons with no transients could not be added (e.g. REST API Doc)
+- Fixed bug where addons with no transients could not be added (e.g. REST API Doc)
 - Added separate ExpressionService class to sample code
 - Fixed issue in sample code when searching for work object by id.
 - Updated analytics addon version and corrected typo in artifact name
+- Minor documentation updates
 
 ### 02-23-2018
 - Update version to starter 2.0.4 (also most addons)
